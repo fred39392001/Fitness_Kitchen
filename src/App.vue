@@ -6,4 +6,8 @@
 
 <style lang="scss">
 @import './assets/all';
+
+body{
+  height: 100vh;
+}
 </style>

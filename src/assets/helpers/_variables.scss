@@ -76,14 +76,15 @@ $dark:          $gray-800 !default;
 $theme-colors: () !default;
 $theme-colors: map-merge(
   (
-    "primary":    $primary,
+    "primary":    #38618C, //$primary,
+    "gold": #e1d28f,
     "secondary":  $secondary,
     "success":    $success,
     "info":       $info,
     "warning":    $warning,
     "danger":     $danger,
     "light":      $light,
-    "dark":       $dark
+    "dark":       #0D0221//$dark
   ),
   $theme-colors
 );
@@ -234,7 +235,7 @@ $grid-row-columns:            6 !default;
 $line-height-lg:              1.5 !default;
 $line-height-sm:              1.5 !default;
 
-$border-width:                1px !default;
+$border-width:                0.75px;//1px !default;
 $border-color:                $gray-300 !default;
 
 $border-radius:               .25rem !default;
@@ -742,7 +743,7 @@ $navbar-light-hover-color:          rgba($black, .7) !default;
 $navbar-light-active-color:         rgba($black, .9) !default;
 $navbar-light-disabled-color:       rgba($black, .3) !default;
 $navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: rgba($black, .1) !default;
+$navbar-light-toggler-border-color: #e1d28f;//rgba($black, .1) !default;
 
 $navbar-light-brand-color:                $navbar-light-active-color !default;
 $navbar-light-brand-hover-color:          $navbar-light-active-color !default;

@@ -1,57 +1,19 @@
 <template>
   <div>
-    <div class="bg-white sticky-top">
-      <div class="container">
-        <nav class="navbar px-0 navbar-expand-lg navbar-light bg-white">
-          <a class="navbar-brand position-absolute" href="./index.html"
-            style="left: 50%; transform: translate(-50%, -50%); top: 50%;">
-            Navbar
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse"
-          data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-          aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse bg-white custom-header-md-open" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a class="nav-link pl-0" href="./product.html">Lorem ipsum</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./detail.html">Lorem ipsum</a>
-              </li>
-            </ul>
-          </div>
-          <div class="d-flex">
-            <a href="#"><i class="fas fa-heart mr-5"></i></a>
-            <a href="./cart-2.html"><i class="fas fa-shopping-cart"></i></a>
-          </div>
-        </nav>
-      </div>
-    </div>
     <div class="container">
-      <div class="row flex-md-row-reverse flex-column">
-        <div class="col-md-6">
-          <img
-          src="https://images.unsplash.com/photo-1526038335545-4b96864eaee7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80
-          alt=" class="img-fluid">
-        </div>
-        <div class="col-md-6 d-flex flex-column justify-content-center mt-md-0 mt-3">
-          <h2 class="font-weight-bold">Lorem ipsum dolor sit</h2>
-          <h5 class="font-weight-normal text-muted mt-2">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor
-          </h5>
-          <div class="input-group mb-0 mt-4">
-            <input type="text" class="form-control rounded-0" placeholder="" />
-            <div class="input-group-append">
-              <button class="btn btn-dark rounded-0" type="button" id="search">
-                Lorem ipsum
-              </button>
-            </div>
+      <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img src="..." class="d-block w-100" alt="">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="row mt-5">
         <div class="col-md-6 mt-md-4">
           <div class="card border-0 mb-4 position-relative position-relative">

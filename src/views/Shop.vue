@@ -1,11 +1,16 @@
 <template>
-  <div class="home">
-      <div id="nav">
-        <router-link to="/">前台首頁</router-link> |
-        <router-link to="/products">產品列表</router-link> |
-        <router-link to="/cart">購物車列表</router-link> |
-        <router-link to="/admin" class="text-gray">後台管理頁面</router-link>
-    </div>
+  <div id="app">
+    <Navbar></Navbar>
     <router-view/>
   </div>
 </template>
+
+<script>
+import Navbar from '../components/Navbar.vue';
+
+export default {
+  components: {
+    Navbar,
+  },
+};
+</script>
