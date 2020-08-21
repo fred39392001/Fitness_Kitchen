@@ -4,10 +4,9 @@
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../../public/img/banner-01.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="../../public/img/banner-02.jpg" class="d-block w-100" alt="...">
+          <div class="bg-cover" style="background-image: url(../../public/img/banner-01.jpg);
+          height: 450px">
+            </div>
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls"
