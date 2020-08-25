@@ -1,0 +1,40 @@
+body{
+    font-family: "Noto+Sans+TC", "Roboto", sans-serif; 
+}
+
+.bg-cover{
+    background-size: cover;
+    background-position: center center;
+}
+
+.bg-cover-left{
+    background-size: cover;
+    background-position: center left;
+}
+
+.bg-cover-right{
+    background-size: cover;
+    background-position: center right;
+}
+
+.box-shadow{
+    box-shadow:0 3px 5px rgba(0, 0, 0, 0.16)
+}
+
+.box-shadow:hover{
+    box-shadow:0 4px 10px rgba(0, 0, 0, 0.24)
+}
+
+.line-through{
+    text-decoration: line-through;
+}
+
+.mt-gutter-s{
+    margin-top:10px;
+}
+
+@media (max-width: 767px) {
+    .mt-gutter-s{
+        margin-top:0px;
+    }
+}

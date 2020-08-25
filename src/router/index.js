@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Shop.vue';
+import Home from '../views/frontend/Shop.vue';
 
 Vue.use(VueRouter);
 
@@ -11,37 +11,37 @@ const routes = [
     children: [
       {
         path: '',
-        component: () => import('../views/Home.vue'),
+        component: () => import('../views/frontend/Home.vue'),
       },
       {
         path: '/products',
-        component: () => import('../views/Products.vue'),
+        component: () => import('../views/frontend/Products.vue'),
       },
       {
         path: '/product/:id',
-        component: () => import('../views/Product.vue'),
+        component: () => import('../views/frontend/Product.vue'),
       },
       {
         path: '/cart',
-        component: () => import('../views/Cart.vue'),
+        component: () => import('../views/frontend/Cart.vue'),
       },
     ],
   },
   {
     path: '/admin',
-    component: () => import('../views/Dashboard.vue'),
+    component: () => import('../views/frontend/Dashboard.vue'),
     children: [
       {
         path: '/',
-        component: () => import('../views/dashboard/Index.vue'),
+        component: () => import('../views/backend/Index.vue'),
       },
       {
         path: 'products',
-        component: () => import('../views/dashboard/Products.vue'),
+        component: () => import('../views/backend/Products.vue'),
       },
       {
         path: 'coupons',
-        component: () => import('../views/dashboard/Coupons.vue'),
+        component: () => import('../views/backend/Coupons.vue'),
       },
     ],
   },
