@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <Swiper ref="mySwiper" :options="swiperOption">
       <swiper-slide class="item" v-for="item in identical" :key="item.id">
         <div class="card h-100">

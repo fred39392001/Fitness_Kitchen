@@ -19,7 +19,7 @@
                 <router-link class="nav-link mx-md-2 text-light" to="/products">美味餐點</router-link>
               </li>
               <li class="nav-item d-flex">
-                <router-link class="nav-link text-light" to="./cart">
+                <router-link class="nav-link text-light" to="/cart">
                   <i class="fas fa-shopping-cart"></i>
                 </router-link>
               </li>

@@ -9,6 +9,6 @@
 
 body{
   height: 100vh;
-  font-family: "Noto Sans TC", sans-serif, "Roboto";
+  font-family: "Noto Sans TC", "Arimo", sans-serif;
 }
 </style>

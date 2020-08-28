@@ -11,7 +11,7 @@
               <h1 class="text-light font-weight-bold pt-2" style="font-size:50px">食物的事，
                 <br>就交給我們！</h1>
               <img src="img/Fitness_Kitchen_Logo_W.svg" class="mt-2" style="height:75px" alt="">
-              <a class="btn btn-outline-light mt-4">美味餐點</a>
+              <router-link class="btn btn-outline-light mt-4" to="/products">美味餐點</router-link>
             </div>
           </div>
         </div>
@@ -20,11 +20,11 @@
 
     <div class="container mt-4">
       <div class="row">
-        <div class="col-md-3 pr-0">
+        <div class="col-md-3 pr-0 d-none d-md-block">
           <div class="bg-cover-left" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/euP5HGBmA45vXiXnxclhkhzIUhbpglwmZ9YOJYENWJD8ZXxeRmm9eaIMSSOytzhB8sBemfziLss3Ht5bshzbDZ2UFFx2cMOHu7i6SnhiszSZls5DgQ937KEt8xD1KpDm.jpg);
         height: 600px"></div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 d-none d-md-block">
           <div class="bg-cover-left" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/87pZQLJEcgu1QG45qPspBFu4c7usY3zoBAPLhkfXU2oLstBdgYHt8Y9j1QbipVoAXcvZyKNIpCAgs6JOpO8tDRKbHgdPXJJ5HjHqiY0rmgE4lI2RFvoVv51MDuQzzgNK.jpg);
           height: 600px"></div>
         </div>
@@ -94,16 +94,86 @@
           height:200px"></div>
         </div>
       </div>
+      <div class="form-row mt-gutter-s">
+        <div class="col-md-4 d-none d-md-block">
+          <div class="bg-gray h-100 d-flex flex-column justify-content-center">
+            <p class="h3 font-weight-bold text-dark text-center pt-3 px-3"
+            style="font-size:24px">
+            線上飲食顧問
+            </p>
+            <p class="text-dark px-3">
+              為了擁有良好的體態及健康的減脂，我們知道健身與飲食控制同等重要，若您在享用我們餐食的同時，有任何疑問，歡迎您在上班時間，連絡我們的線上飲食顧問。
+            </p>
+            <p class="text-dark px-3">
+              我們的顧問將提供您基礎的飲食建議，健身的基本觀念及餐食購買指南，迅速建立應有的基本概念，協助您在健身的路上，更快進入狀況，展現成效。
+            </p>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="bg-cover h-100 d-none d-md-block" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZAa5tQAR0hDaMY64rcb2qbCSOKdenwdl3FYzhKsO0OFQL8FuqUfYoBtbdLIglNFGaglSNCjdM9IehzjxbpPjCA2x5wNm4P1zLMWzryFgvtSFMQPcSoI1cMTzieek5FuD.jpg)"></div>
+          <div class="bg-cover d-md-none" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZAa5tQAR0hDaMY64rcb2qbCSOKdenwdl3FYzhKsO0OFQL8FuqUfYoBtbdLIglNFGaglSNCjdM9IehzjxbpPjCA2x5wNm4P1zLMWzryFgvtSFMQPcSoI1cMTzieek5FuD.jpg);
+          height:200px"></div>
+        </div>
+        <div class="col-md-4 d-md-none">
+          <div class="bg-gray h-100 d-flex flex-column justify-content-center">
+            <p class="h3 font-weight-bold text-dark text-center pt-3 px-3"
+            style="font-size:24px">
+            線上飲食顧問
+            </p>
+            <p class="text-dark px-3">
+              為了擁有良好的體態及健康的減脂，我們知道健身與飲食控制同等重要，若您在享用我們餐食的同時，有任何疑問，歡迎您在上班時間，連絡我們的線上飲食顧問。
+            </p>
+            <p class="text-dark px-3">
+              我們的顧問將提供您基礎的飲食建議，健身的基本觀念及餐食購買指南，迅速建立應有的基本概念，協助您在健身的路上，更快進入狀況，展現成效。
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="bg-primary">
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between text-white py-4">
-          <p class="mb-0">© 2020 LOGO All Rights Reserved.</p>
-          <ul class="d-flex list-unstyled mb-0 h4">
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#" class="text-white mx-3"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#" class="text-white ml-3"><i class="fab fa-line"></i></a></li>
-          </ul>
+    <div class="container">
+      <hr class="mt-5" style="border-width:1.5px">
+    </div>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-lg-3 col-6">
+          <div class="d-flex align-items-center">
+            <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZqeVMx7gtGyCPMn5JN1jFnLymw4JzM4rcSO3XTtmOISxLzS0FQqDYk9P58Xenm0Irwsc7LX8ANZtC5zeWYKb4RvFcRxSj1EA8k0lvi9LQk7QHjRiCXT43g1Ie5lErDot.jpg"
+            alt="" style="height:100px; width:100px; border-radius:50%">
+            <div>
+              <p class="mb-0 text-silver font-weight-bold" style="font-size:15px">南投市 李小姐</p>
+              <small>我最喜歡線上購物服務，不受地域限制，也能享受美味的料理。</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <div class="d-flex align-items-center">
+            <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/MWKsMt5ZsQFxVgHyNgA7nZ8TQPpbdIJ3L8LXRlrlkeXvQIjNWdg8y68vbAa5CWx3pbyR61D0Nviy11l2PqF7duYzdF6An5nUWzGrtuqMUSEgX4Brg1uL981XxieaSBR9.jpg"
+            alt="" style="height:100px; width:100px; border-radius:50%">
+            <div>
+              <p class="mb-0 text-silver font-weight-bold" style="font-size:15px">台中市 劉先生</p>
+              <small>線上顧問的服務很棒，讓我對飲食及健身有基礎認識！</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+          <div class="d-flex align-items-center">
+            <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/fIviun4snkIzwIl2Vv6WaBt8zdDqUasuaLbXI0UuR4nsLDPDjfawzdWQ25ieC7YfTvA7Ae4GN1GFNKOf9RjRWCEiMfo3YAKeL0fm7gtl4GHeStI9VyAUsUxrNZutcAVx.jpg"
+            alt="" style="height:100px; width:100px; border-radius:50%">
+            <div>
+              <p class="mb-0 text-silver font-weight-bold" style="font-size:15px">台南市 陳小姐</p>
+              <small>餐食十分美味，而且選擇多元，營養成分符合健身需求。</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+          <div class="d-flex align-items-center">
+            <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZJqa1FGqPbEOnSdnKO3GGjjsQhBtINNhgrRewxwERP9rpjdzN3DVaDrI8ocQkqpd5D293NyhVwpX8CdRnzClkS5p0aAXy4xAcMrWpiug67H85TiHFqmFocNS4MMyoj5u.jpg"
+            alt="" style="height:100px; width:100px; border-radius:50%">
+            <div>
+              <p class="mb-0 text-silver font-weight-bold" style="font-size:15px">新北市 湯瑪士</p>
+              <small>臺灣很棒！發現臺灣有這樣的服務，非常開心，我愛臺灣。</small>
+            </div>
+          </div>
         </div>
       </div>
     </div>
