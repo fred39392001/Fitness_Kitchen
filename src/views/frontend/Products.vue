@@ -69,8 +69,8 @@
                 </h4>
               <p class="card-text text-muted mb-0">{{ item.options.summary }}</p>
               <div class="mt-2 d-lg-flex">
-                <del class="text-muted mr-3">
-                  原價：{{ item.origin_price | money }}
+                <del class="text-muted mr-sm-3">
+                  <small>原價：{{ item.origin_price | money }}</small>
                 </del>
                 <p class="text-primary mb-0">售價：<strong>{{ item.price | money }}</strong>
                 </p>
@@ -82,7 +82,7 @@
               </router-link>
 
               <button type="button" class="btn btn-outline-primary btn-sm ml-auto
-              d-flex align-items-center" @click="addToCart(item.id)"
+              d-flex align-items-center" @click.prevent="addToCart(item.id)"
               :disabled="status.loadingItem === item.id">加入購物車
                 <i class="ml-2 spinner-grow spinner-grow-sm"
                 v-if="status.loadingItem === item.id"></i>
@@ -101,7 +101,6 @@ export default {
     return {
       products: [],
       newProducts: [],
-      carts: [],
       status: {
         loadingItem: '',
       },
@@ -110,7 +109,6 @@ export default {
   },
   created() {
     this.getProducts();
-    this.addToCart();
   },
   methods: {
     getProducts() {
@@ -144,11 +142,15 @@ export default {
         .then((res) => {
           this.status.loadingItem = '';
           this.isLoading = false;
+          this.$bus.$emit('get-cart');
           console.log(res);
         })
         .catch((error) => {
           this.status.loadingItem = '';
           console.log(error.response);
+          this.$bus.$emit('message:push',
+            `加入失敗!${error.response.data.errors}`,
+            'danger');
           this.isLoading = false;
         });
     },

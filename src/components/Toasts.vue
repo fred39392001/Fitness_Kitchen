@@ -16,7 +16,7 @@
           style="width: 20px; height: 20px"
           :class="`bg-${ item.status }`"
         />
-        <strong class="mr-auto">六角實戰班</strong>
+        <strong class="mr-auto">FITNESS KITCHEN</strong>
         <small>現在</small>
         <button
           type="button"

@@ -79,6 +79,8 @@ $theme-colors: map-merge(
     "primary":    #ca293e, //$primary,
     "silver": #A9ACA9,
     "gold":#C1AE7C,
+    "soft":#FFBFB7,
+    "warm":#FFB800,
     "gray": #f3f3f3,
     "secondary":  $secondary,
     "success":    $success,
@@ -733,8 +735,8 @@ $navbar-toggler-padding-x:          .75rem !default;
 $navbar-toggler-font-size:          $font-size-lg !default;
 $navbar-toggler-border-radius:      $btn-border-radius !default;
 
-$navbar-dark-color:                 rgba($white, .5) !default;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
+$navbar-dark-color:                 #FFE6E8;//rgba($white, .8) !default;
+$navbar-dark-hover-color:           $white;//rgba($white, .75) !default;
 $navbar-dark-active-color:          $white !default;
 $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='#FFFFFF' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;

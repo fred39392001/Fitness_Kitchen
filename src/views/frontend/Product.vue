@@ -9,10 +9,12 @@
           <p class="h2 text-primary">{{ product.title }}</p>
           <hr class="border-primary mt-0 w-100" style="border-width:1.5px">
           <p class="pt-3">{{ product.content }}</p>
-          <div class="btn-group align-self-start mt-3" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-outline-primary rounded-0">-</button>
-            <button type="button" class="btn btn-outline-primary rounded-0">1</button>
-            <button type="button" class="btn btn-outline-primary rounded-0">+</button>
+          <div class="mt-2 d-flex justify-content-end">
+            <del class="text-muted mr-3">
+              <small>原價：{{ product.origin_price | money }}</small>
+            </del>
+            <p class="h4 text-primary mb-0">售價：<strong>{{ product.price | money }}</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -104,6 +106,9 @@ export default {
         options: {},
         isLoading: false,
       },
+      status: {
+        loadingItem: '',
+      },
     };
   },
   components: {
@@ -122,6 +127,31 @@ export default {
           this.isLoading = false;
           this.product = res.data.data;
           this.$set(this.product, 'num', 1);
+        });
+    },
+    addToCart(id, quantity = 1) {
+      this.status.loadingItem = id;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      this.isLoading = true;
+      const cart = {
+        product: id,
+        quantity,
+      };
+      // console.log(cart);
+      this.$http.post(url, cart)
+        .then((res) => {
+          this.status.loadingItem = '';
+          this.isLoading = false;
+          this.$bus.$emit('get-cart');
+          console.log(res);
+        })
+        .catch((error) => {
+          this.status.loadingItem = '';
+          console.log(error.response);
+          this.$bus.$emit('message:push',
+            `加入失敗!${error.response.data.errors}`,
+            'danger');
+          this.isLoading = false;
         });
     },
   },
