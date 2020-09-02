@@ -135,7 +135,7 @@
     </div>
     <div class="container my-5">
       <div class="row">
-        <div class="col-lg-3 col-6">
+        <div class="col-sm-6 col-lg-3">
           <div class="d-flex align-items-center">
             <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZqeVMx7gtGyCPMn5JN1jFnLymw4JzM4rcSO3XTtmOISxLzS0FQqDYk9P58Xenm0Irwsc7LX8ANZtC5zeWYKb4RvFcRxSj1EA8k0lvi9LQk7QHjRiCXT43g1Ie5lErDot.jpg"
             alt="" style="height:100px; width:100px; border-radius:50%">
@@ -145,7 +145,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-sm-6 col-lg-3 mt-5 mt-sm-0">
           <div class="d-flex align-items-center">
             <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/MWKsMt5ZsQFxVgHyNgA7nZ8TQPpbdIJ3L8LXRlrlkeXvQIjNWdg8y68vbAa5CWx3pbyR61D0Nviy11l2PqF7duYzdF6An5nUWzGrtuqMUSEgX4Brg1uL981XxieaSBR9.jpg"
             alt="" style="height:100px; width:100px; border-radius:50%">
@@ -155,7 +155,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+        <div class="col-sm-6 col-lg-3  mt-5 mt-lg-0">
           <div class="d-flex align-items-center">
             <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/fIviun4snkIzwIl2Vv6WaBt8zdDqUasuaLbXI0UuR4nsLDPDjfawzdWQ25ieC7YfTvA7Ae4GN1GFNKOf9RjRWCEiMfo3YAKeL0fm7gtl4GHeStI9VyAUsUxrNZutcAVx.jpg"
             alt="" style="height:100px; width:100px; border-radius:50%">
@@ -165,7 +165,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+        <div class="col-sm-6 col-lg-3 mt-5 mt-lg-0">
           <div class="d-flex align-items-center">
             <img class="bg-cover mr-3 img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZJqa1FGqPbEOnSdnKO3GGjjsQhBtINNhgrRewxwERP9rpjdzN3DVaDrI8ocQkqpd5D293NyhVwpX8CdRnzClkS5p0aAXy4xAcMrWpiug67H85TiHFqmFocNS4MMyoj5u.jpg"
             alt="" style="height:100px; width:100px; border-radius:50%">

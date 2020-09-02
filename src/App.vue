@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Toast/>
     <router-view/>
   </div>
 </template>
@@ -12,3 +13,18 @@ body{
   font-family: "Noto Sans TC", "Arimo", sans-serif;
 }
 </style>
+
+<script>
+import Toast from '@/components/Toasts.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Toast,
+  },
+  data() {
+    return {
+    };
+  },
+};
+</script>

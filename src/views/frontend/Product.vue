@@ -1,12 +1,13 @@
 <template>
     <div class="container">
+      <loading :active.sync="isLoading"></loading>
       <div class="row justify-content-center mt-5">
         <div class="col-md-7">
           <img :src="product.imageUrl[0]" class="img-fluid" alt="...">
         </div>
         <div class="col-md-5 d-flex flex-column justify-content-center">
           <p class="h2 text-primary">{{ product.title }}</p>
-          <hr class="border border-primary mt-0" style="width:100%">
+          <hr class="border-primary mt-0 w-100" style="border-width:1.5px">
           <p class="pt-3">{{ product.content }}</p>
           <div class="btn-group align-self-start mt-3" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-outline-primary rounded-0">-</button>
@@ -101,6 +102,7 @@ export default {
         num: 1,
         imageUrl: [],
         options: {},
+        isLoading: false,
       },
     };
   },
@@ -112,10 +114,12 @@ export default {
   },
   methods: {
     getProduct() {
+      this.isLoading = true;
       const { id } = this.$route.params;
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/product/${id}`;
       this.$http.get(url)
         .then((res) => {
+          this.isLoading = false;
           this.product = res.data.data;
           this.$set(this.product, 'num', 1);
         });

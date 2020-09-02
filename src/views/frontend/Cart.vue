@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0"
     style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
     height: 250px">
@@ -22,62 +23,56 @@
           </div>
           <hr class="border-dark mb-0" style="border-width:1.5px">
           <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <td class="text-center" style="width:250px"><img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/D87wPpwGyQtMdOE5i6N2Ap01Z48byt85Wqy7uPQtt27k6z9F36zvI4AkYSPY2RmE8Dm9dCBFPr4CJ2WS3gWr6C0CDGE27Xub0D9dVR3n0OqCoAPB9iMNWZ0SgfHVKlxz.jpg" alt="" style="height: 100px; object-fit: cover;"></td>
-                  <td class="align-middle text-center" style="min-width:125px">豪邁嫩肩牛排<br>
-                  <small class="text-silver d-none d-md-block">豪邁份量，大口滿足</small></td>
-                  <td class="align-middle text-center">
-                    <div class="btn-group align-middle" role="group"
-                    aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-primary rounded-0">-</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">1</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">+</button>
-                    </div>
-                  </td>
-                  <td class="align-middle text-center">NT.399</td>
-                  <td class="align-middle text-center">
-                    <a class="text-primary" href="">
-                      <i class="fas fa-trash-alt"></i>
-                    </a>
-                  </td>
-                </tr>
+            <table class="table table-striped mb-0">
+              <thead class="text-center">
+                <td>產品圖片</td>
+                <td>產品名稱</td>
+                <td>數量</td>
+                <td>價格</td>
+                <td>刪除</td>
               </thead>
               <tbody>
-                <tr>
-                  <td class="text-center" style="width:200px"><img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/dubrULYOnN1L24rJynJ4XPID2IlZaDSzlaShqtgvpsEwaAR5nMPR16EfXCUFrOqISOEjhfxyMylZYm8kPKdeoK5lsRHGRTWjXiA92DEgTUfMhEFFTvnxgZufYdJtwtmN.jpg" alt="" style="height: 100px; object-fit: cover;"></td>
-                  <td class="align-middle text-center">國產火烤豬肋排<br>
-                  <small class="text-silver d-none d-md-block">外皮焦香，內層軟嫩，讓人吮指回味</small></td>
-                  <td class="align-middle text-center">
-                    <div class="btn-group align-middle" role="group"
-                    aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-primary rounded-0">-</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">1</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">+</button>
+                <tr v-for="item in carts" :key="item.product.id + 1">
+                  <td class="text-center px-0" style="width:100px">
+                    <img :src="item.product.imageUrl[0]"
+                  alt="" style="height: 100px; object-fit: cover;"></td>
+                  <td class="align-middle text-center" style="min-width:100px">
+                    {{ item.product.title }}
+                  </td>
+                  <td class="align-middle text-center" style="min-width:125px">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-primary btn-sm  d-flex align-items-center"
+                        type="button" :disabled="item.quantity === 1"
+                        @click="item.quantity --;
+                        updateQuantity( item.product.id, item.quantity)">
+                        <span v-if="status.loadingUpdateCart === item.product.id"
+                        class="spinner-border spinner-border-sm" style="width:12px;height:12px">
+                        </span>
+                        <span v-else>-</span>
+                        </button>
+                      </div>
+                      <input min="1" type="number" class="form-control text-center"
+                      v-model="item.quantity"
+                      @keyup="updateQuantity(item.product.id, item.quantity)"
+                      :disabled="item.quantity === 1">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary btn-sm d-flex align-items-center"
+                        type="button"
+                        @click="item.quantity ++;
+                        updateQuantity( item.product.id, item.quantity)"
+                        :disabled="status.loadingUpdateCart === item.product.id">
+                        <span v-if="status.loadingUpdateCart === item.product.id"
+                        class="spinner-border spinner-border-sm" style="width:12px;height:12px">
+                        </span>
+                        <span v-else>+</span>
+                        </button>
+                      </div>
                     </div>
                   </td>
-                  <td class="align-middle text-center">NT.399</td>
-                  <td class="align-middle text-center">
-                    <a class="text-primary" href="">
-                      <i class="fas fa-trash-alt"></i>
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center"><img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/YIqTqexdvTuK3DxhL8uL2MTHSFywjZlh1hWr4VXZrLDEOTUBQMAprVuwl1Z9XctGZETiBnIaCztIWOvPHRWFe2peuFHP5JXDMaf2lWbx5Fja9mSJqb7DCI63Fv6hLYl6.jpg" alt="" style="height: 100px; object-fit: cover;"></td>
-                  <td class="align-middle text-center">頂級鮮切霜降牛排<br>
-                  <small class="text-silver d-none d-md-block">肉質軟嫩，口感鮮嫩多汁，風味獨具</small></td>
-                  <td class="align-middle text-center">
-                    <div class="btn-group align-middle" role="group"
-                    aria-label="Basic example">
-                      <button type="button" class="btn btn-outline-primary rounded-0">-</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">1</button>
-                      <button type="button" class="btn btn-outline-primary rounded-0">+</button>
-                    </div>
-                  </td>
-                  <td class="align-middle text-center">NT.199</td>
-                  <td class="align-middle text-center">
+                  <td class="align-middle text-center" style="min-width:125px">
+                    {{ item.product.price * item.quantity | money}}</td>
+                  <td class="align-middle text-center" style="min-width:100px">
                     <a class="text-primary" href="">
                       <i class="fas fa-trash-alt"></i>
                     </a>
@@ -86,23 +81,13 @@
               </tbody>
             </table>
           </div>
-          <table class="table mt-4 text-muted">
-            <tbody>
-              <tr>
-                <th scope="row" class="border-0 px-0 font-weight-normal">購物金額</th>
-                <td class="text-right border-0 px-0">NT.1,098</td>
-              </tr>
-              <tr>
-                <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">運費</th>
-                <td class="text-right border-0 px-0 pt-0">NT.230</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="d-flex justify-content-between mt-4">
-            <p class="mb-0 h4 font-weight-bold">總金額</p>
-            <p class="mb-0 h4 font-weight-bold">NT.1,328</p>
+          <div class="container">
+            <div class="d-flex justify-content-end mt-4">
+              <p class="mb-0 h4 font-weight-bold" style="min-width:80px">總金額</p>
+              <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
+            </div>
           </div>
-          <div class="row d-flex justify-content-between mt-5">
+          <div class="row d-flex justify-content-between mt-4">
             <div class="col-md-2">
               <router-link class="btn btn-outline-dark btn-block"
               to="/products">
@@ -121,3 +106,63 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      carts: [],
+      cartTotal: 0,
+      isLoading: false,
+      status: {
+        loadingUpdateCart: '',
+      },
+    };
+  },
+  created() {
+    this.getCart();
+  },
+  methods: {
+    getCart() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      this.$http.get(url)
+        .then((res) => {
+          console.log('購物車', res);
+          this.carts = res.data.data;
+          this.updateToTalPrice();
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          this.status.loadingItem = '';
+          console.log(error.response.data.errors);
+          this.isLoading = false;
+        });
+    },
+    updateToTalPrice() {
+      this.carts.forEach((item) => {
+        this.cartTotal += item.product.price * item.quantity;
+      });
+    },
+    updateQuantity(id, quantity = 1) {
+      this.status.loadingUpdateCart = id;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
+      const cart = {
+        product: id,
+        quantity,
+      };
+      console.log(cart);
+      this.$http.patch(url, cart)
+        .then((res) => {
+          this.status.loadingUpdateCart = '';
+          this.getCart();
+          console.log(res);
+        })
+        .catch((error) => {
+          this.status.loadingUpdateCart = '';
+          console.log(error.response.data.errors);
+        });
+    },
+  },
+};
+</script>
