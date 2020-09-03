@@ -3,12 +3,12 @@
     <loading :active.sync="isLoading"></loading>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0"
     style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 250px">
+    height: 200px">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
-            <div class="d-flex flex-column align-items-start">
-              <h1 class="text-light font-weight-bold pt-2" style="font-size:50px">食指大動，
+            <div class="d-flex flex-column align-items-start mt-minus-m">
+              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
                 <br>宅配到府！</h1>
             </div>
           </div>
@@ -105,24 +105,28 @@
         </div>
       </div>
     </div>
-    <div class="container" v-else>
-      <div class="row justify-content-center">
-        <div class="col bg-white py-5" style="min-height: calc(100vh - 81px - 81px);">
+    <div class="container" v-else  style="min-height: calc(100vh - 81px - 81px);">
+      <div class="row flex-column justify-content-center align-items-center">
+        <div class="col bg-white pt-5">
           <div class="d-flex justify-content-center">
             <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
           </div>
           <hr class="border-dark mb-0" style="border-width:1.5px">
           <div class="d-flex justify-content-center">
-            <p class="h3 text-dark mt-4">購物車無商品，快去逛逛！</p>
+            <p class="h3 text-dark mt-3">購物車無商品，快去逛逛！</p>
           </div>
-          <div class="row d-flex justify-content-center mt-4">
-            <div class="col-md-2">
-              <router-link class="btn btn-outline-dark btn-block"
-              to="/products">
-              繼續選購
-              </router-link>
-            </div>
-          </div>
+        </div>
+        <div class="col-md-5">
+          <img class="img-fluid mt-3"
+        src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/nOoInzZIltvbLPKRcHKMFc3zyqrQyBWAGRaN9ke6zVSP9LaMndr8ta41GVAAZhKyOJ4apHZjHwuPv7sgyA96GoF4cXLSSXip7puDq1JRXK7Z7wdr8kIdnwMKU7XvB2tc.jpg" alt="">
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center mt-3 mb-5">
+        <div class="col-md-2">
+          <router-link class="btn btn-outline-dark btn-block"
+          to="/products">
+          繼續選購
+          </router-link>
         </div>
       </div>
     </div>
@@ -151,6 +155,7 @@ export default {
       this.$http.get(url)
         .then((res) => {
           console.log('購物車', res);
+          this.status.loadingUpdateCart = '';
           this.carts = res.data.data;
           this.updateToTalPrice();
           this.isLoading = false;

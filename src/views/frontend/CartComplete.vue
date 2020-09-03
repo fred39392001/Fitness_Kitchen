@@ -2,12 +2,12 @@
   <div>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0"
     style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 250px">
+    height: 200px">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
-            <div class="d-flex flex-column align-items-start">
-              <h1 class="text-light font-weight-bold pt-2" style="font-size:50px">食指大動，
+            <div class="d-flex flex-column align-items-start mt-minus-m">
+              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
                 <br>宅配到府！</h1>
             </div>
           </div>
@@ -28,8 +28,8 @@
               </p>
             </div>
             <img class="img-fluid" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XFsNBRYyHjMUY5h4K5HRSIVfW93b3jhcmYFm8SLrgOvf9FA4dphwFwYTb4e7hN9hUdD3M0CJvwoROmbZqwbc8y6H1epIqNe9uzMOUp0aLgst9h4ijvb1HT2QppKrNUNY.jpg" alt="">
-            <router-link to="/" class="btn btn-outline-dark mt-3">
-            回到首頁
+            <router-link to="/products" class="btn btn-outline-dark mt-3">
+            繼續選購
             </router-link>
           </div>
           <div class="col-md-6">

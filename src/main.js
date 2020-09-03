@@ -6,6 +6,14 @@ import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
 import $ from 'jquery';
 
+// vee-validate
+import {
+  ValidationObserver,
+  ValidationProvider, configure, localize, extend,
+} from 'vee-validate';
+import * as rules from 'vee-validate/dist/rules';
+import zhTW from 'vee-validate/dist/locale/zh_TW.json';
+
 import App from './App.vue';
 import router from './router';
 import 'swiper/swiper-bundle.css';
@@ -23,6 +31,22 @@ Vue.component('Loading', Loading);
 
 Vue.use(VueAxios, axios);
 Vue.use(VueAwesomeSwiper);
+
+// vee-validate
+Object.keys(rules).forEach((rule) => {
+  extend(rule, rules[rule]);
+});
+configure({
+  classes: {
+    valid: 'is-valid',
+    invalid: 'is-invalid',
+  },
+});
+
+localize('tw', zhTW);
+
+Vue.component('ValidationObserver', ValidationObserver);
+Vue.component('ValidationProvider', ValidationProvider);
 
 Vue.filter('money', moneyFilter);
 

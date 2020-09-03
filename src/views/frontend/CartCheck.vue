@@ -2,12 +2,12 @@
   <div>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0"
     style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 250px">
+    height: 200px">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
-            <div class="d-flex flex-column align-items-start">
-              <h1 class="text-light font-weight-bold pt-2" style="font-size:50px">食指大動，
+            <div class="d-flex flex-column align-items-start mt-minus-m">
+              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
                 <br>宅配到府！</h1>
             </div>
           </div>
