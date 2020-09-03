@@ -143,6 +143,9 @@ export default {
           this.status.loadingItem = '';
           this.isLoading = false;
           this.$bus.$emit('get-cart');
+          this.$bus.$emit('message:push',
+            '商品已成功加入購物車!',
+            'success');
           console.log(res);
         })
         .catch((error) => {

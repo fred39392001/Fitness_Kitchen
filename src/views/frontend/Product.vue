@@ -6,15 +6,32 @@
           <img :src="product.imageUrl[0]" class="img-fluid" alt="...">
         </div>
         <div class="col-md-5 d-flex flex-column justify-content-center">
-          <p class="h2 text-primary">{{ product.title }}</p>
+          <p class="h2 mt-3 mt-md-0 text-primary">{{ product.title }}</p>
           <hr class="border-primary mt-0 w-100" style="border-width:1.5px">
-          <p class="pt-3">{{ product.content }}</p>
-          <div class="mt-2 d-flex justify-content-end">
-            <del class="text-muted mr-3">
-              <small>原價：{{ product.origin_price | money }}</small>
-            </del>
-            <p class="h4 text-primary mb-0">售價：<strong>{{ product.price | money }}</strong>
+          <p>{{ product.content }}</p>
+          <div class="d-flex">
+            <p class="h4 text-primary mb-0 mr-3">
+              售價：<strong>{{ product.price | money}}</strong>
             </p>
+            <del class="text-muted">
+              <small>原價：{{ product.origin_price | money}}</small>
+            </del>
+          </div>
+          <div class="d-flex mt-3">
+            <div class="w-50 mr-3">
+              <select name="unit" class="form-control mr-3 border border-dark"
+              v-model="product.num">
+                <option class="text-center" :value="num" v-for="num in 8" :key="num">
+                  {{ num }} {{ product.unit }}
+                </option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-outline-primary w-50 d-flex justify-content-center
+            align-items-center" @click="addToCart(product.id, product.num)">
+              <i class="mr-2 spinner-grow spinner-grow-sm"
+                v-if="status.loadingItem === product.id"></i>
+                加到購物車
+            </button>
           </div>
         </div>
       </div>
@@ -104,11 +121,11 @@ export default {
         num: 1,
         imageUrl: [],
         options: {},
-        isLoading: false,
       },
       status: {
         loadingItem: '',
       },
+      isLoading: false,
     };
   },
   components: {
@@ -141,8 +158,11 @@ export default {
       this.$http.post(url, cart)
         .then((res) => {
           this.status.loadingItem = '';
-          this.isLoading = false;
           this.$bus.$emit('get-cart');
+          this.$bus.$emit('message:push',
+            '商品已成功加入購物車!',
+            'success');
+          this.isLoading = false;
           console.log(res);
         })
         .catch((error) => {

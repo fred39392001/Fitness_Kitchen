@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" v-if="carts.length">
       <div class="row justify-content-center">
         <div class="col bg-white py-5" style="min-height: calc(100vh - 81px - 81px);">
           <div class="d-flex justify-content-center">
@@ -73,7 +73,8 @@
                   <td class="align-middle text-center" style="min-width:125px">
                     {{ item.product.price * item.quantity | money}}</td>
                   <td class="align-middle text-center" style="min-width:100px">
-                    <a class="text-primary" href="">
+                    <a @click.prevent="deleteCartItem(item.product.id)"
+                    class="text-primary" href="">
                       <i class="fas fa-trash-alt"></i>
                     </a>
                   </td>
@@ -82,7 +83,7 @@
             </table>
           </div>
           <div class="container">
-            <div class="d-flex justify-content-end mt-4">
+            <div class="d-flex justify-content-end mt-4"  v-if="cartTotal > 0">
               <p class="mb-0 h4 font-weight-bold" style="min-width:80px">總金額</p>
               <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
             </div>
@@ -98,6 +99,27 @@
               <router-link class="btn btn-outline-primary btn-block"
               to="/cart-form">
               下一步
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container" v-else>
+      <div class="row justify-content-center">
+        <div class="col bg-white py-5" style="min-height: calc(100vh - 81px - 81px);">
+          <div class="d-flex justify-content-center">
+            <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
+          </div>
+          <hr class="border-dark mb-0" style="border-width:1.5px">
+          <div class="d-flex justify-content-center">
+            <p class="h3 text-dark mt-4">購物車無商品，快去逛逛！</p>
+          </div>
+          <div class="row d-flex justify-content-center mt-4">
+            <div class="col-md-2">
+              <router-link class="btn btn-outline-dark btn-block"
+              to="/products">
+              繼續選購
               </router-link>
             </div>
           </div>
@@ -140,9 +162,11 @@ export default {
         });
     },
     updateToTalPrice() {
+      let total = 0;
       this.carts.forEach((item) => {
-        this.cartTotal += item.product.price * item.quantity;
+        total += item.product.price * item.quantity;
       });
+      this.cartTotal = total;
     },
     updateQuantity(id, quantity = 1) {
       this.status.loadingUpdateCart = id;
@@ -161,6 +185,25 @@ export default {
         .catch((error) => {
           this.status.loadingUpdateCart = '';
           console.log(error.response.data.errors);
+        });
+    },
+    deleteCartItem(id) {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping/${id}`;
+      this.$http.delete(url)
+        .then(() => {
+          this.$bus.$emit('get-cart');
+          this.getCart();
+          this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '商品已刪除!',
+            'success');
+        })
+        .catch(() => {
+          this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '商品刪除失敗!',
+            'danger');
         });
     },
   },

@@ -22,7 +22,9 @@
           type="button"
           class="ml-2 mb-1 close"
           data-dismiss="toast"
-          aria-label="Close">
+          aria-label="Close"
+          @click="closeToast(`toast-${i}`)"
+          >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -34,6 +36,8 @@
 </template>
 
 <script>
+/* global $ */
+
 export default {
   name: 'Toasts',
   data() {
@@ -69,6 +73,9 @@ export default {
           }
         });
       }, 5000);
+    },
+    closeToast(element) {
+      $(`#${element}`).toast('hide');
     },
   },
 };
