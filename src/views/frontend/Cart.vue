@@ -182,9 +182,15 @@ export default {
         .then(() => {
           this.status.loadingUpdateCart = '';
           this.getCart();
+          this.$bus.$emit('message:push',
+            '商品數量更新成功!',
+            'success');
         })
         .catch(() => {
           this.status.loadingUpdateCart = '';
+          this.$bus.$emit('message:push',
+            '商品數量更新失敗!',
+            'danger');
         });
     },
     deleteCartItem(id) {

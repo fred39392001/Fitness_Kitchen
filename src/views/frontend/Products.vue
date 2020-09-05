@@ -125,8 +125,7 @@ export default {
           if (categoryName) {
             this.filterType = categoryName;
           }
-        }).catch((error) => {
-          console.log(error);
+        }).catch(() => {
           this.isLoading = false;
         });
     },
@@ -138,20 +137,17 @@ export default {
         product: id,
         quantity,
       };
-      // console.log(cart);
       this.$http.post(url, cart)
-        .then((res) => {
+        .then(() => {
           this.status.loadingItem = '';
           this.isLoading = false;
           this.$bus.$emit('get-cart');
           this.$bus.$emit('message:push',
             '商品已成功加入購物車!',
             'success');
-          console.log(res);
         })
         .catch((error) => {
           this.status.loadingItem = '';
-          console.log(error.response);
           this.$bus.$emit('message:push',
             `加入失敗!${error.response.data.errors}`,
             'danger');

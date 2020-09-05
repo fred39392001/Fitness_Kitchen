@@ -19,17 +19,32 @@
       <div class="container">
         <div class="row justify-content-center flex-md-row">
           <div class="col-md-7">
-            <div class="bg-light">
+            <div class="bg-light" v-if="order.paid === false">
               <div class="d-flex">
                 <h4 class="text-dark mb-0 font-weight-bold">結帳</h4>
               </div>
               <hr class="border-dark" style="border-width:1.5px">
               <p>
-                差一步完成訂單，點選確認付款完成訂單。<br>我們將在收到您的訂單後， 約 1 ~ 3 個工作天內出貨！
+                只差一步了！點選確認付款以完成訂單。<br>我們將在收到您的訂單後， 約 1 ~ 3 個工作天內出貨！
               </p>
+              <img class="img-fluid w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Dry9BIAASb4giKnaoSNHtSk3l5GPx4a6lcxAxtoWM9GekuI7w9wUWmb53XFkhg1WWY9rBIPobkNvyGtttxQzHfU1zKpAyZvzJLo4g4XfFQODfneK8E2tGIquXnH9rAcK.jpg" alt="">
+            </div>
+            <div class="bg-light" v-else>
+              <div class="d-flex">
+                <h4 class="text-dark mb-0 font-weight-bold">訂單完成</h4>
+              </div>
+              <hr class="border-dark" style="border-width:1.5px">
+              <p>
+                感謝您的購買！<br>您的訂單， 將在 1 ~ 3 個工作天內出貨！
+              </p>
+              <img class="img-fluid w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XFsNBRYyHjMUY5h4K5HRSIVfW93b3jhcmYFm8SLrgOvf9FA4dphwFwYTb4e7hN9hUdD3M0CJvwoROmbZqwbc8y6H1epIqNe9uzMOUp0aLgst9h4ijvb1HT2QppKrNUNY.jpg" alt="">
+              <router-link to="/products" class="btn btn-outline-dark mt-3"
+              v-if="order.paid === true">
+              繼續選購
+              </router-link>
             </div>
           </div>
-          <div class="col-md-5">
+          <div class="col-md-5 mt-3">
             <div class="border p-4">
               <h4 class="font-weight-bold mb-3">訂單明細</h4>
               <div v-for="( product, i ) in order.products" :key="i">
@@ -73,7 +88,7 @@
                 <tbody>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">付款金額</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount }}</td>
+                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount | money}}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 font-weight-normal">付款方式</th>
@@ -92,14 +107,18 @@
                   </tr>
                 </tbody>
               </table>
-              <hr>
-              <div class="d-flex justify-content-end">
-                <a class="btn btn-primary">
+              <hr v-if="order.paid === false">
+              <div class="d-flex justify-content-end" v-if="order.paid === false">
+                <a class="btn btn-primary d-flex align-items-center"
+                @click.prevent="payOrder" :disabled="loadingItem">
                 確認付款
+                <span v-if="loadingItem" class="spinner-grow spinner-grow-sm ml-2"
+                style="width:12px;height:12px">
+                </span>
                 </a>
               </div>
             </div>
-            <div class="mt-3">
+            <div class="mt-3" v-if="order.paid === false">
               <a @click.prevent="backHome" class="btn btn-outline-dark" >
               回到首頁
               </a>
@@ -125,7 +144,6 @@ export default {
   },
   created() {
     this.orderId = this.$route.params.orderId;
-    console.log(this.$route);
     this.getOrder();
   },
   methods: {
@@ -135,12 +153,35 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          console.log(res);
           this.order = res.data.data;
           this.isLoading = false;
         })
         .catch(() => {
+          this.$bus.$emit('message:push',
+            '無法取得資料！請稍後再試！',
+            'danger');
           this.isLoading = false;
+        });
+    },
+    payOrder() {
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}/paying`;
+      this.loadingItem = true;
+      this.$http
+        .post(url)
+        .then((res) => {
+          if (res.data.data.paid) {
+            this.getOrder();
+          }
+          this.$bus.$emit('message:push',
+            '已完成付款！',
+            'success');
+          this.loadingItem = false;
+        })
+        .catch(() => {
+          this.$bus.$emit('message:push',
+            '付款失敗！請再試一次！',
+            'danger');
+          this.loadingItem = false;
         });
     },
     backHome() {

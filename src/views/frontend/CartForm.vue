@@ -206,9 +206,15 @@ export default {
           this.getCart();
           this.loadingItem = '';
           this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '訂單已送出!',
+            'success');
         }).catch(() => {
           this.loadingItem = '';
           this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '訂單送出失敗!請再試一次！',
+            'danger');
         });
     },
   },
