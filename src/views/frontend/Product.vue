@@ -20,16 +20,17 @@
           <div class="d-flex mt-3">
             <div class="w-50 mr-3">
               <select name="unit" class="form-control mr-3 border border-dark"
-              v-model="product.num">
+              v-model="product.num" style="text-align:center; text-align-last:center">
                 <option class="text-center" :value="num" v-for="num in 8" :key="num">
                   {{ num }} {{ product.unit }}
                 </option>
               </select>
             </div>
-            <button type="button" class="btn btn-outline-primary w-50 d-flex justify-content-center
+            <button type="button" class="btn btn-outline-primary w-50
+            d-flex justify-content-center
             align-items-center" @click="addToCart(product.id, product.num)">
               <i class="mr-2 spinner-grow spinner-grow-sm"
-                v-if="status.loadingItem === product.id"></i>
+                v-if="status.loadingItem === product.id" style="width:12px;height:12px"></i>
                 加到購物車
             </button>
           </div>
@@ -156,18 +157,16 @@ export default {
       };
       // console.log(cart);
       this.$http.post(url, cart)
-        .then((res) => {
+        .then(() => {
           this.status.loadingItem = '';
           this.$bus.$emit('get-cart');
           this.$bus.$emit('message:push',
             '商品已成功加入購物車!',
             'success');
           this.isLoading = false;
-          console.log(res);
         })
         .catch((error) => {
           this.status.loadingItem = '';
-          console.log(error.response);
           this.$bus.$emit('message:push',
             `加入失敗!${error.response.data.errors}`,
             'danger');

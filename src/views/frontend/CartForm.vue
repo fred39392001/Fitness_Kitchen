@@ -93,12 +93,12 @@
                     </textarea>
                   </div>
                   <div class="row d-flex justify-content-between mt-5">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <router-link to="/cart" class="btn btn-outline-dark btn-block">
                       上一步
                       </router-link>
                     </div>
-                    <div class="col-md-3 mt-3 mt-md-0">
+                    <div class="col-md-4 mt-3 mt-md-0">
                       <button class="btn btn-outline-primary btn-block d-flex align-items-center
                       justify-content-center" :disabled="invalid"
                       :class="{ disabled: loadingItem }">
@@ -150,7 +150,7 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -180,14 +180,11 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.$http.get(url)
         .then((res) => {
-          console.log('購物車', res);
           this.carts = res.data.data;
           this.updateToTalPrice();
           this.isLoading = false;
         })
-        .catch((error) => {
-          this.status.loadingItem = '';
-          console.log(error.response.data.errors);
+        .catch(() => {
           this.isLoading = false;
         });
     },
@@ -199,7 +196,6 @@ export default {
       this.cartTotal = total;
     },
     createOrder() {
-      this.isLoading = true;
       this.loadingItem = true;
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders`;
       const order = { ...this.form };

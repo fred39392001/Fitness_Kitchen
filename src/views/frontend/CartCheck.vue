@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0"
     style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
     height: 200px">
@@ -14,10 +15,10 @@
         </div>
       </div>
     </div>
-    <div class="bg-light my-5">
+    <div class="bg-light my-3">
       <div class="container">
         <div class="row justify-content-center flex-md-row">
-          <div class="col-md-6">
+          <div class="col-md-7">
             <div class="bg-light">
               <div class="d-flex">
                 <h4 class="text-dark mb-0 font-weight-bold">結帳</h4>
@@ -28,42 +29,23 @@
               </p>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="border p-4">
-              <h4 class="font-weight-bold">訂單明細</h4>
-              <div class="d-flex">
-                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/D87wPpwGyQtMdOE5i6N2Ap01Z48byt85Wqy7uPQtt27k6z9F36zvI4AkYSPY2RmE8Dm9dCBFPr4CJ2WS3gWr6C0CDGE27Xub0D9dVR3n0OqCoAPB9iMNWZ0SgfHVKlxz.jpg" alt="" class="mr-2" style="height: 48px">
-                <div class="w-100">
-                  <div class="d-flex justify-content-between font-weight-bold">
-                    <p class="mb-0">豪邁嫩肩牛排</p>
-                    <p class="mb-0">X 1</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="text-muted mb-0"><small>NT.399</small></p>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex mt-3">
-                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/dubrULYOnN1L24rJynJ4XPID2IlZaDSzlaShqtgvpsEwaAR5nMPR16EfXCUFrOqISOEjhfxyMylZYm8kPKdeoK5lsRHGRTWjXiA92DEgTUfMhEFFTvnxgZufYdJtwtmN.jpg" alt="" class="mr-2" style="height: 48px">
-                <div class="w-100">
-                  <div class="d-flex justify-content-between font-weight-bold">
-                    <p class="mb-0">國產火烤豬肋排</p>
-                    <p class="mb-0">X 1</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="text-muted mb-0"><small>NT.699</small></p>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex mt-3">
-                <img src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/YIqTqexdvTuK3DxhL8uL2MTHSFywjZlh1hWr4VXZrLDEOTUBQMAprVuwl1Z9XctGZETiBnIaCztIWOvPHRWFe2peuFHP5JXDMaf2lWbx5Fja9mSJqb7DCI63Fv6hLYl6.jpg" alt="" class="mr-2" style="height: 48px">
-                <div class="w-100">
-                  <div class="d-flex justify-content-between font-weight-bold">
-                    <p class="mb-0">頂級鮮切霜降牛排</p>
-                    <p class="mb-0">X 1</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="text-muted mb-0"><small>NT.199</small></p>
+              <h4 class="font-weight-bold mb-3">訂單明細</h4>
+              <div v-for="( product, i ) in order.products" :key="i">
+                <div class="d-flex mb-3">
+                  <img :src="product.product.imageUrl[0]" alt="" class="mr-2"
+                  style="width: 60px; object-fit: cover">
+                  <div class="w-100">
+                    <div class="d-flex justify-content-between font-weight-bold">
+                      <p class="mb-0">{{ product.product.title }}</p>
+                      <p class="mb-0">X {{ product.quantity }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <small class="mb-0 text-muted">
+                        {{ product.product.price | money }} / {{ product.product.unit }}
+                      </small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -71,19 +53,19 @@
                 <tbody>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">電子郵件</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">abc@mail.com</td>
+                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.user.email }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 font-weight-normal">收件人姓名</th>
-                    <td class="text-right border-0 px-0">ABC</td>
+                    <td class="text-right border-0 px-0">{{ order.user.name }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人電話</th>
-                    <td class="text-right border-0 px-0 pt-0">0912345678</td>
+                    <td class="text-right border-0 px-0 pt-0">{{ order.user.tel }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人地址</th>
-                    <td class="text-right border-0 px-0 pt-0">XX縣XX鎮XX路一段XX號</td>
+                    <td class="text-right border-0 px-0 pt-0">{{ order.user.address }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -91,37 +73,82 @@
                 <tbody>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">付款金額</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">NT.1,527</td>
+                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 font-weight-normal">付款方式</th>
-                    <td class="text-right border-0 px-0">信用卡</td>
+                    <td class="text-right border-0 px-0">{{ order.payment }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">付款狀態</th>
-                    <td class="text-right border-0 px-0 pt-0 text-primary font-weight-bold">
+                    <td v-if="!order.paid" class="text-right border-0 px-0 pt-0 text-primary
+                    font-weight-bold">
                       尚未付款
+                    </td>
+                    <td v-else class="text-right border-0 px-0 pt-0 text-success
+                    font-weight-bold">
+                      付款完成
                     </td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-            <div class="row d-flex justify-content-between mt-5">
-              <div class="col-md-6">
-                <router-link to="/" class="btn btn-outline-dark btn-block">
-                回到首頁
-                </router-link>
-              </div>
-              <div class="col-md-6 mt-3 mt-md-0">
-                <router-link class="btn btn-primary btn-block"
-                to="/cart-complete">
+              <hr>
+              <div class="d-flex justify-content-end">
+                <a class="btn btn-primary">
                 確認付款
-                </router-link>
+                </a>
+              </div>
             </div>
+            <div class="mt-3">
+              <a @click.prevent="backHome" class="btn btn-outline-dark" >
+              回到首頁
+              </a>
+            </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      order: {
+        user: {},
+      },
+      orderId: '',
+      isLoading: false,
+      loadingItem: false,
+    };
+  },
+  created() {
+    this.orderId = this.$route.params.orderId;
+    console.log(this.$route);
+    this.getOrder();
+  },
+  methods: {
+    getOrder() {
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders/${this.orderId}`;
+      this.isLoading = true;
+      this.$http
+        .get(url)
+        .then((res) => {
+          console.log(res);
+          this.order = res.data.data;
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
+        });
+    },
+    backHome() {
+      this.$router.push('/');
+      this.$bus.$emit('message:push',
+        '尚未付款！訂單已放棄，請重新下單。',
+        'danger');
+    },
+  },
+};
+</script>

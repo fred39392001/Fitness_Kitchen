@@ -84,8 +84,8 @@
               <button type="button" class="btn btn-outline-primary btn-sm ml-auto
               d-flex align-items-center" @click.prevent="addToCart(item.id)"
               :disabled="status.loadingItem === item.id">加入購物車
-                <i class="ml-2 spinner-grow spinner-grow-sm"
-                v-if="status.loadingItem === item.id"></i>
+                <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block"
+                v-if="status.loadingItem === item.id" style="width:12px;height:12px"></i>
               </button>
             </div>
           </div>
@@ -101,6 +101,7 @@ export default {
     return {
       products: [],
       newProducts: [],
+      filterType: '',
       status: {
         loadingItem: '',
       },

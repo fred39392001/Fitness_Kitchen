@@ -154,15 +154,13 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/shopping`;
       this.$http.get(url)
         .then((res) => {
-          console.log('購物車', res);
           this.status.loadingUpdateCart = '';
           this.carts = res.data.data;
           this.updateToTalPrice();
           this.isLoading = false;
         })
-        .catch((error) => {
+        .catch(() => {
           this.status.loadingItem = '';
-          console.log(error.response.data.errors);
           this.isLoading = false;
         });
     },
@@ -180,16 +178,13 @@ export default {
         product: id,
         quantity,
       };
-      console.log(cart);
       this.$http.patch(url, cart)
-        .then((res) => {
+        .then(() => {
           this.status.loadingUpdateCart = '';
           this.getCart();
-          console.log(res);
         })
-        .catch((error) => {
+        .catch(() => {
           this.status.loadingUpdateCart = '';
-          console.log(error.response.data.errors);
         });
     },
     deleteCartItem(id) {
