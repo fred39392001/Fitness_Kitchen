@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/frontend/Shop.vue';
+import Home from '../views/Layout.vue';
 
 Vue.use(VueRouter);
 
@@ -37,7 +37,7 @@ const routes = [
   },
   {
     path: '/admin',
-    component: () => import('../views/frontend/Dashboard.vue'),
+    component: () => import('../views/Dashboard.vue'),
     children: [
       {
         path: '/',
