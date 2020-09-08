@@ -38,10 +38,6 @@
                 感謝您的購買！<br>您的訂單， 將在 1 ~ 3 個工作天內出貨！
               </p>
               <img class="img-fluid w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/XFsNBRYyHjMUY5h4K5HRSIVfW93b3jhcmYFm8SLrgOvf9FA4dphwFwYTb4e7hN9hUdD3M0CJvwoROmbZqwbc8y6H1epIqNe9uzMOUp0aLgst9h4ijvb1HT2QppKrNUNY.jpg" alt="">
-              <router-link to="/products" class="btn btn-outline-dark mt-3"
-              v-if="order.paid === true">
-              繼續選購
-              </router-link>
             </div>
           </div>
           <div class="col-md-5 mt-3">
@@ -108,18 +104,35 @@
                 </tbody>
               </table>
               <hr v-if="order.paid === false">
-              <div class="d-flex justify-content-end" v-if="order.paid === false">
-                <a class="btn btn-primary d-flex align-items-center"
-                @click.prevent="payOrder" :disabled="loadingItem">
-                確認付款
-                <span v-if="loadingItem" class="spinner-grow spinner-grow-sm ml-2"
-                style="width:12px;height:12px">
-                </span>
-                </a>
+            <div class="row justify-content-end">
+              <div class="col-md-6">
+                <div v-if="order.paid === false">
+                  <a class="btn btn-primary d-flex align-items-center justify-content-center"
+                  @click.prevent="payOrder" :disabled="loadingItem">
+                  確認付款
+                  <span v-if="loadingItem" class="spinner-grow spinner-grow-sm ml-2"
+                  style="width:12px;height:12px">
+                  </span>
+                  </a>
+                </div>
               </div>
             </div>
+            </div>
+            <router-link to="/products" class="btn btn-outline-dark mt-3 d-none d-md-block w-50"
+            v-if="order.paid === true">
+            繼續選購
+            </router-link>
+            <router-link to="/products" class="btn btn-outline-dark mt-3 btn-block d-md-none"
+            v-if="order.paid === true">
+            繼續選購
+            </router-link>
             <div class="mt-3" v-if="order.paid === false">
-              <a @click.prevent="backHome" class="btn btn-outline-dark" >
+              <a @click.prevent="backHome" class="btn btn-outline-dark w-50 d-none d-md-block" >
+              回到首頁
+              </a>
+            </div>
+            <div class="mt-3" v-if="order.paid === false">
+              <a @click.prevent="backHome" class="btn btn-outline-dark btn-block d-md-none" >
               回到首頁
               </a>
             </div>

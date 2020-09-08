@@ -1,39 +1,46 @@
 <template>
-    <div class="dashborad">
-        <h2>這裡是後台管理頁面</h2>
-            <div id="nav">
-                <router-link to="/admin/">後台首頁</router-link> |
-                <router-link to="/admin/products">後台產品列表</router-link> |
-                <router-link to="/admin/coupons">後台優惠券列表</router-link> |
-                <router-link class="text-gray" to="/">回前台頁面</router-link>
-            </div>
-        <router-view/>
-    </div>
+  <div id="app">
+    <Navbar></Navbar>
+    <router-view :token="token" v-if="checkSuccess"/>
+  </div>
 </template>
-<style lang="scss">
-.dashborad {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
 
-#nav {
-    padding: 30px;
+<script>
+import Navbar from '../components/BackendNavbar.vue';
 
-    .text-gray{
-    color:gray;
-    }
-
-    a {
-    font-weight: bold;
-    color: #2c3e50;
-    text-decoration: none;
-
-    &.router-link-exact-active {
-        color: #42b983;
-    }
-    }
-}
-</style>
+export default {
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      token: '',
+      checkSuccess: false,
+    };
+  },
+  created() {
+    this.checkToken();
+  },
+  methods: {
+    checkToken() {
+      const url = `${process.env.VUE_APP_APIPATH}api/auth/check`;
+      this.token = document.cookie.replace(/(?:(?:^|.*;\s*)fitnessKitchenToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
+      this.$http.defaults.headers.common.Authorization = `Bearer ${this.token}`;
+      this.$http.post(url, {
+        api_token: this.token,
+      }).then((res) => {
+        console.log(res);
+        this.checkSuccess = true;
+        this.$bus.$emit('message:push',
+          `${res.data.message}！`,
+          'success');
+      }).catch((error) => {
+        this.$router.push('/login');
+        this.$bus.$emit('message:push',
+          `${error.response.data.errors.api_token}請重新登入！`,
+          'danger');
+      });
+    },
+  },
+};
+</script>

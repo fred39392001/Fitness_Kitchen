@@ -15,6 +15,9 @@
               <li class="nav-item is-active">
                 <router-link class="nav-link" to="/">首頁</router-link>
               </li>
+              <li class="nav-item is-active">
+                <router-link class="nav-link ml-md-2" to="/about">關於我們</router-link>
+              </li>
               <li class="nav-item">
                 <router-link class="nav-link mx-md-2" to="/products">美味餐點</router-link>
               </li>
