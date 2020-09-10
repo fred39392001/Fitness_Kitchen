@@ -44,7 +44,7 @@
           <p v-html="product.description"></p>
         </div>
       </div>
-            <div class="row mt-5">
+      <div class="row mt-5">
         <div class="col-md-3">
           <h4 class="text-primary">營養成份</h4>
         </div>
@@ -103,9 +103,11 @@
           </div>
         </div>
       </div>
-      <div class="row">
+      <ProductNotice/>
+      <hr class="mt-5" style="border-width:1.5px">
+      <div class="row mt-5">
         <div class="col">
-        <h5 class="font-weight-bold mb-3 h5">相關商品</h5>
+        <h4 class="mb-4">相關商品</h4>
         <RelatedPorducts :product="product" @update="getProduct"/>
         </div>
       </div>
@@ -113,6 +115,7 @@
 </template>
 
 <script>
+import ProductNotice from '@/components/ProductNotice.vue';
 import RelatedPorducts from '@/components/RelatedProducts.vue';
 
 export default {
@@ -130,6 +133,7 @@ export default {
     };
   },
   components: {
+    ProductNotice,
     RelatedPorducts,
   },
   created() {

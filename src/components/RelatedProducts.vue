@@ -7,12 +7,17 @@
           :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
           @click.prevent="getDetail(item.id)">
           </div>
-          <div class="card-body">
-            <h6 class="card-title">
-              {{ item.title }}
-            </h6>
-            <div class="text-right pr-2">
-              {{ item.price }} 元
+          <div class="card-body text-center px-2 py-3">
+            <h5 class="mb-0">
+              <router-link :to="`/product/${item.id}`">{{ item.title }}</router-link>
+            </h5>
+            <div class="mt-2 d-lg-flex justify-content-center align-items-center">
+              <del class="text-muted mr-lg-2" style="font-size:10px">
+                <small>原價：{{ item.origin_price | money }}</small>
+              </del>
+              <p class="text-primary mb-0" style="font-size:14px">
+                售價：<strong>{{ item.price | money }}</strong>
+              </p>
             </div>
           </div>
         </div>

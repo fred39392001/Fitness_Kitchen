@@ -70,9 +70,9 @@
               </div>
             </div>
             <div class="col-md-12 mt-gutter-s">
-              <div class="bg-cover-top d-none d-md-block" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/urzUac3rCQlOzykviidbgE19V4FEXrxZpgMEZ0jViAA5gYiK2W7H8RAlfqW9BIw0C3Oar2tRJvcq5gVkxl1CmEUGYMB56VAb3witC2l7Dr8jWFoMQZLAyzruQlJVhDnK.jpg);
+              <div class="bg-cover d-none d-md-block" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/bK40k7N3jRTQjxICZ4lHXu3xOKKPWC2g0jUtpmjWQvDk3Graeuf7RaPcJYBEH25xEOA6ZUwLUYlpyEuQcDvXx3R1Jbndzh6prnu9HVtE0Kcv8Il1oNbilxHL8gy3DQ5u.jpg);
               height:200px"></div>
-              <div class="bg-cover-top d-md-none" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/urzUac3rCQlOzykviidbgE19V4FEXrxZpgMEZ0jViAA5gYiK2W7H8RAlfqW9BIw0C3Oar2tRJvcq5gVkxl1CmEUGYMB56VAb3witC2l7Dr8jWFoMQZLAyzruQlJVhDnK.jpg);
+              <div class="bg-cover d-md-none" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/bK40k7N3jRTQjxICZ4lHXu3xOKKPWC2g0jUtpmjWQvDk3Graeuf7RaPcJYBEH25xEOA6ZUwLUYlpyEuQcDvXx3R1Jbndzh6prnu9HVtE0Kcv8Il1oNbilxHL8gy3DQ5u.jpg);
               height:200px"></div>
             </div>
           </div>
@@ -98,9 +98,9 @@
                 </div>
               </div>
             <div class="col-md-12">
-              <div class="bg-cover-top d-none d-md-block" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/urzUac3rCQlOzykviidbgE19V4FEXrxZpgMEZ0jViAA5gYiK2W7H8RAlfqW9BIw0C3Oar2tRJvcq5gVkxl1CmEUGYMB56VAb3witC2l7Dr8jWFoMQZLAyzruQlJVhDnK.jpg);
+              <div class="bg-cover d-none d-md-block" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ieQFjDT9AEB1s3cPGsFAgtmccwGwhVNcD0cKSsoR6mzdBq6wBCuN3GpwSi6ylir3wQSt0QGedSt9847cPNU0uHuBheekB2YYGqiOvhhkUBL5K8odcjb77LhsOwhn9NPT.jpg);
               height:200px"></div>
-              <div class="bg-cover-top d-md-none" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/urzUac3rCQlOzykviidbgE19V4FEXrxZpgMEZ0jViAA5gYiK2W7H8RAlfqW9BIw0C3Oar2tRJvcq5gVkxl1CmEUGYMB56VAb3witC2l7Dr8jWFoMQZLAyzruQlJVhDnK.jpg);
+              <div class="bg-cover d-md-none" style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ieQFjDT9AEB1s3cPGsFAgtmccwGwhVNcD0cKSsoR6mzdBq6wBCuN3GpwSi6ylir3wQSt0QGedSt9847cPNU0uHuBheekB2YYGqiOvhhkUBL5K8odcjb77LhsOwhn9NPT.jpg);
               height:200px"></div>
             </div>
             <div class="col-md-12 mt-gutter-s d-none d-md-block">

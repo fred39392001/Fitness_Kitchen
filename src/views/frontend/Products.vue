@@ -59,14 +59,10 @@
             <router-link :to="`/product/${item.id}`">
             <img :src="item.imageUrl[0]" class="card-img-top rounded-0" alt="...">
             </router-link>
-            <a href="#" class="text-dark">
-              <i class="far fa-heart position-absolute text-light" style="right: 16px; top: 16px;
-              z-index:99"></i>
-            </a>
             <div class="card-body d-flex flex-column align-items-center justify-content-center">
               <h4 class="mb-0">
                 <router-link :to="`/product/${item.id}`">{{ item.title }}</router-link>
-                </h4>
+              </h4>
               <p class="card-text text-muted mb-0">{{ item.options.summary }}</p>
               <div class="mt-2 d-lg-flex">
                 <del class="text-muted mr-sm-3">
