@@ -21,12 +21,12 @@
             </thead>
             <tbody>
               <tr v-for="(product, index) in products" :key="index">
-                <td scope="row" class="align-middle">{{product.category}}</td>
+                <td scope="row" class="align-middle">{{ product.category }}</td>
                 <td scope="row" class="align-middle text-center"><img :src="product.imageUrl" alt=""
                 style="height:80px"></td>
-                <td class="align-middle">{{product.title}}</td>
-                <td class="align-middle">{{product.origin_price | money}}</td>
-                <td class="align-middle">{{product.price | money}}</td>
+                <td class="align-middle">{{ product.title }}</td>
+                <td class="align-middle">{{ product.origin_price | money }}</td>
+                <td class="align-middle">{{ product.price | money }}</td>
                 <td class="align-middle">
                   <span v-if="product.enabled" class="text-success">已上架</span>
                   <span v-else>未上架</span>
@@ -341,7 +341,6 @@ export default {
         })
         .catch((error) => {
           this.isLoading = false;
-          console.log(error.response);
           this.status.fileUploading = false;
           this.$bus.$emit('message:push',
             `${error.response.data.errors.file}檔案請勿超過 2MB！`,

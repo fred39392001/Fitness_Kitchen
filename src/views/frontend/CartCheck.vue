@@ -84,7 +84,7 @@
                 <tbody>
                   <tr>
                     <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">付款金額</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount | money}}</td>
+                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount | money }}</td>
                   </tr>
                   <tr>
                     <th scope="row" class="border-0 px-0 font-weight-normal">付款方式</th>

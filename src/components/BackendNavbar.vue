@@ -16,6 +16,9 @@
                 <li class="nav-item is-active">
                   <router-link class="nav-link" to="/admin/products">產品列表</router-link>
                 </li>
+                <li class="nav-item is-active">
+                  <router-link class="nav-link" to="/admin/coupons">優惠券列表</router-link>
+                </li>
                 <li class="nav-item">
                   <router-link class="nav-link mx-md-2" to="/admin/orders">訂單列表</router-link>
                 </li>
@@ -33,3 +36,11 @@
         </nav>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+};
+</script>

@@ -11,10 +11,10 @@
           <p>{{ product.content }}</p>
           <div class="d-flex">
             <p class="h4 text-primary mb-0 mr-3">
-              售價：<strong>{{ product.price | money}}</strong>
+              售價：<strong>{{ product.price | money }}</strong>
             </p>
             <del class="text-muted">
-              <small>原價：{{ product.origin_price | money}}</small>
+              <small>原價：{{ product.origin_price | money }}</small>
             </del>
           </div>
           <div class="d-flex mt-3">
@@ -54,7 +54,7 @@
               <p><i class="fas fa-weight-hanging pr-2"></i>重量：
                 <span class="border-bottom border-dark text-center"
                 style="display:inline-block; width:30%">
-                {{product.options.weight}}
+                {{ product.options.weight }}
                 </span>克
               </p>
             </div>
@@ -62,7 +62,7 @@
               <p><i class="fas fa-fire-alt pr-2"></i>熱量：
                 <span class="border-bottom border-dark text-center"
                 style="display:inline-block; width:30%">
-                {{product.options.calories}}
+                {{ product.options.calories }}
                 </span>卡
               </p>
             </div>
@@ -70,7 +70,7 @@
               <p><i class="fas fa-egg pr-2"></i>蛋白質：
                 <span class="border-bottom border-dark text-center"
                 style="display:inline-block; width:30%">
-                {{product.options.protein}}
+                {{ product.options.protein }}
                 </span>克
               </p>
             </div>
@@ -96,7 +96,7 @@
               <p><i class="fas fa-certificate pr-2"></i>鈉：
                 <span class="border-bottom border-dark text-center"
                 style="display:inline-block; width:30%">
-                {{product.options.na}}
+                {{ product.options.na }}
                 </span>毫克
               </p>
             </div>
@@ -159,7 +159,6 @@ export default {
         product: id,
         quantity,
       };
-      // console.log(cart);
       this.$http.post(url, cart)
         .then(() => {
           this.status.loadingItem = '';

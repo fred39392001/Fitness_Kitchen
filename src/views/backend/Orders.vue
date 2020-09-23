@@ -67,7 +67,6 @@ export default {
       this.isLoading = true;
       this.$http.get(url)
         .then((res) => {
-          console.log(res);
           this.orders = res.data.data;
           this.pagination = res.data.meta.pagination;
           this.isLoading = false;
@@ -97,8 +96,7 @@ export default {
           this.isLoading = false;
           this.getOrders();
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.$bus.$emit('message:push',
             '付款狀態修改失敗！請再試一次！',
             'danger');

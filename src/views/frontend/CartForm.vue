@@ -116,6 +116,7 @@
           <div class="col-md-5">
             <div class="border p-4">
               <h4 class="font-weight-bold mb-3">訂單明細</h4>
+              <hr>
               <div v-for="item in carts" :key="item.product.id + 1">
                 <div class="d-flex mb-3">
                   <img :src="item.product.imageUrl[0]" alt="" class="mr-2"
@@ -133,17 +134,77 @@
                   </div>
                 </div>
               </div>
-              <table class="table my-3 border-top border-bottom text-muted">
-                <tbody>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 font-weight-normal">小計</th>
-                    <td class="text-right border-0 px-0"> {{ cartTotal | money }}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <hr>
+              <p v-if="cartTotal > 2000" class="text-muted">
+                您的消費金額已達 2,000 元，立即輸入夏季限時優惠碼<br>"
+                <span class="text-success">happysummer88 </span>"，即享
+                <span class="text-success">88 折 </span>優惠！</p>
+                <p v-else class="text-muted">
+                消費滿 2,000 即可享 88 折優惠，您目前的消費金額尚差
+                <span class="text-danger">{{ 2000 - cartTotal }}</span> 元！</p>
+              <div v-if="cartTotal > 2000" class="input-group mb-3">
+                <input v-model="coupon_code" type="text" class="form-control" placeholder="請輸入優惠碼">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" @click="addCouponCode">
+                    套用</button>
+                </div>
+              </div>
+              <div v-else class="mb-3">
+                <router-link to="/products" class="btn btn-outline-dark btn-block">
+                  繼續選購
+                </router-link>
+              </div>
+              <ul class="pl-0 mb-0">
+                <li class="d-flex justify-content-between">
+                  <p class="font-weight-normal mb-0">小計</p>
+                  <p class="mb-0">{{ cartTotal | money }}</p>
+                </li>
+                <li v-if="coupon.enabled" class="d-flex justify-content-between">
+                  <p class="pt-2 mb-0 font-weight-normal text-danger">折扣</p>
+                  <p class="pt-2 mb-0 text-danger">
+                  - {{ cartTotal - cartTotal * (coupon.percent / 100) | money }}</p>
+                </li>
+                <li v-if="coupon.enabled" class="d-flex justify-content-between">
+                  <p v-if="cartTotal * (coupon.percent / 100) < 2000"
+                  class="font-weight-normal mb-0">運費</p>
+                  <p v-if="cartTotal * (coupon.percent / 100) < 2000" class="mb-0">
+                    {{ 170 | money }}
+                  </p>
+                </li>
+                <li v-else class="d-flex justify-content-between">
+                  <p v-if="cartTotal < 2000" class="font-weight-normal mb-0">運費</p>
+                  <p class="mb-0">
+                    <span v-if="cartTotal < 2000">
+                      {{ 170 | money }}
+                    </span>
+                  </p>
+                </li>
+              </ul>
+              <div v-if="cartTotal < 2000 || cartTotal * (coupon.percent / 100) < 2000"
+              class="d-flex justify-content-end">
+                <small class="text-danger">
+                  消費金額滿 2,000 元，免運費
+                </small>
+              </div>
+              <hr>
               <div class="d-flex justify-content-between">
                 <p class="mb-0 h4 font-weight-bold">總金額</p>
-                <p class="mb-0 h4 font-weight-bold">{{ cartTotal | money }}</p>
+                <p v-if="coupon.enabled" class="mb-0 h4 font-weight-bold">
+                  <span v-if="cartTotal * (coupon.percent / 100) < 2000">
+                      {{ 170 + cartTotal * (coupon.percent / 100) | money }}
+                  </span>
+                  <span v-else>
+                      {{ cartTotal * (coupon.percent / 100) | money }}
+                  </span>
+                </p>
+                <p v-else class="mb-0 h4 font-weight-bold">
+                  <span v-if="cartTotal < 2000">
+                    {{ 170 + cartTotal | money }}
+                  </span>
+                  <span v-else>
+                    {{ cartTotal | money }}
+                  </span>
+                </p>
               </div>
               </div>
             </div>
@@ -157,7 +218,7 @@
 export default {
   data() {
     return {
-      carts: [],
+      carts: {},
       cartTotal: 0,
       form: {
         email: '',
@@ -167,6 +228,8 @@ export default {
         payment: '',
         message: '',
       },
+      coupon_code: '',
+      coupon: {},
       isLoading: false,
       loadingItem: false,
     };
@@ -195,15 +258,50 @@ export default {
       });
       this.cartTotal = total;
     },
+    addCouponCode() {
+      this.isLoading = true;
+      const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/coupon/search`;
+      this.$http
+        .post(url, { code: this.coupon_code })
+        .then((res) => {
+          this.getCart();
+          this.coupon = res.data.data;
+          this.isLoading = false;
+          this.$bus.$emit('message:push',
+            '優惠碼加入成功！',
+            'success');
+        }).catch((error) => {
+          const errorData = error.response.data.errors;
+          if (errorData) {
+            errorData.code.forEach((err) => {
+              this.$bus.$emit('message:push',
+                `加入失敗！${err}`,
+                'danger');
+            });
+            this.isLoading = false;
+          } else {
+            const { message } = error.response.data;
+            this.$bus.$emit('message:push',
+              `加入失敗！${message}`,
+              'danger');
+            this.isLoading = false;
+          }
+        });
+    },
     createOrder() {
       this.loadingItem = true;
       const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/ec/orders`;
       const order = { ...this.form };
+
+      if (this.coupon.enabled) {
+        order.coupon = this.coupon.code;
+      }
+
       this.$http.post(url, order)
         .then((res) => {
+          this.getCart();
           this.$bus.$emit('get-cart');
           this.$router.push(`/cart-check/${res.data.data.id}`);
-          this.getCart();
           this.loadingItem = '';
           this.isLoading = false;
           this.$bus.$emit('message:push',

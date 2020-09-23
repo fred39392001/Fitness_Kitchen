@@ -57,8 +57,7 @@ export default {
         .then((res) => {
           this.carts = res.data.data;
         })
-        .catch((error) => {
-          console.log(error.response.data.errors);
+        .catch(() => {
         });
     },
   },

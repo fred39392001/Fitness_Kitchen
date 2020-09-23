@@ -48,7 +48,6 @@ export default {
       this.$http
         .post(url, this.user)
         .then((res) => {
-          console.log(res);
           const { token } = res.data;
           const { expired } = res.data;
           document.cookie = `fitnessKitchenToken=${token}; expires=${new Date(expired * 1000)}; path=/`;
@@ -58,8 +57,7 @@ export default {
             '登入成功!',
             'success');
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.$bus.$emit('message:push',
             '登入失敗！請再試一次！',
             'danger');

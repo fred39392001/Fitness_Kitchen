@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import Navbar from '../components/BackendNavbar.vue';
+import Navbar from '@/components/BackendNavbar.vue';
 
 export default {
   components: {
@@ -29,7 +29,6 @@ export default {
       this.$http.post(url, {
         api_token: this.token,
       }).then((res) => {
-        console.log(res);
         this.checkSuccess = true;
         this.$bus.$emit('message:push',
           `${res.data.message}！`,

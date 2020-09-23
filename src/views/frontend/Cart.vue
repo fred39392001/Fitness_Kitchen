@@ -71,10 +71,10 @@
                     </div>
                   </td>
                   <td class="align-middle text-center" style="min-width:125px">
-                    {{ item.product.price * item.quantity | money}}</td>
+                    {{ item.product.price * item.quantity | money }}</td>
                   <td class="align-middle text-center" style="min-width:100px">
                     <a @click.prevent="deleteCartItem(item.product.id)"
-                    class="text-primary" href="">
+                    class="text-primary" href="#">
                       <i class="fas fa-trash-alt"></i>
                     </a>
                   </td>
@@ -85,7 +85,7 @@
           <div class="container">
             <div class="d-flex justify-content-end mt-4"  v-if="cartTotal > 0">
               <p class="mb-0 h4 font-weight-bold" style="min-width:80px">總金額</p>
-              <p class="mb-0 h4 font-weight-bold">{{cartTotal | money}}</p>
+              <p class="mb-0 h4 font-weight-bold">{{ cartTotal | money }}</p>
             </div>
           </div>
           <div class="row d-flex justify-content-between mt-4">
