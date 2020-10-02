@@ -1,10 +1,9 @@
 <template>
 <div class="container">
-  <div class="row justify-content-center align-items-center"
-  style="height:100vh">
+  <div class="row justify-content-center align-items-center login-page-height">
     <div class="col-md-5">
       <div class="h4 text-center">
-      <span style="font-family:'Russo One'">FITNESS KITCHEN</span><br>
+      <span class="font-RussoOne">FITNESS KITCHEN</span><br>
       管理者登入
       </div>
       <form @submit.prevent="signIn">
@@ -21,7 +20,7 @@
           <button type="submit" class="btn btn-dark ml-3" :disabled="loadingItem">登入</button>
         </div>
         <p class="mt-4 text-muted text-center">
-          <span style="font-family:'Russo One'">FITNESS KITCHEN</span> 管理後台
+          <span class="font-RussoOne">FITNESS KITCHEN</span> 管理後台
         </p>
       </form>
     </div>

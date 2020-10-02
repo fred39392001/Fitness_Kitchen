@@ -2,20 +2,19 @@
   <div class="mb-5">
     <Swiper ref="mySwiper" :options="swiperOption">
       <swiper-slide class="item" v-for="item in identical" :key="item.id">
-        <div class="card h-100">
-          <div class="bg-cover card-img-top" style="height: 180px; cursor: pointer"
-          :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }"
-          @click.prevent="getDetail(item.id)">
+        <div class="card h-100 pointer" @click.prevent="getDetail(item.id)">
+          <div class="bg-cover card-img-top card-img-height"
+          :style="{ backgroundImage: `url(${ item.imageUrl[0] })` }">
           </div>
           <div class="card-body text-center px-2 py-3">
             <h5 class="mb-0">
               <router-link :to="`/product/${item.id}`">{{ item.title }}</router-link>
             </h5>
             <div class="mt-2 d-lg-flex justify-content-center align-items-center">
-              <del class="text-muted mr-lg-2" style="font-size:10px">
-                <small>原價：{{ item.origin_price | money }}</small>
+              <del class="text-muted mr-lg-2">
+                <span class="font-size-xs">原價：{{ item.origin_price | money }}</span>
               </del>
-              <p class="text-primary mb-0" style="font-size:14px">
+              <p class="text-primary mb-0 font-size-s">
                 售價：<strong>{{ item.price | money }}</strong>
               </p>
             </div>

@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-5 d-flex flex-column justify-content-center">
           <p class="h2 mt-3 mt-md-0 text-primary">{{ product.title }}</p>
-          <hr class="border-primary mt-0 w-100" style="border-width:1.5px">
+          <hr class="border-primary mt-0 w-100 hr-border-width">
           <p>{{ product.content }}</p>
           <div class="d-flex">
             <p class="h4 text-primary mb-0 mr-3">
@@ -19,8 +19,8 @@
           </div>
           <div class="d-flex mt-3">
             <div class="w-50 mr-3">
-              <select name="unit" class="form-control mr-3 border border-dark"
-              v-model="product.num" style="text-align:center; text-align-last:center">
+              <select name="unit" class="form-control mr-3 border border-dark select-text-align"
+              v-model="product.num">
                 <option class="text-center" :value="num" v-for="num in 8" :key="num">
                   {{ num }} {{ product.unit }}
                 </option>
@@ -29,8 +29,8 @@
             <button type="button" class="btn btn-outline-primary w-50
             d-flex justify-content-center
             align-items-center" @click="addToCart(product.id, product.num)">
-              <i class="mr-2 spinner-grow spinner-grow-sm"
-                v-if="status.loadingItem === product.id" style="width:12px;height:12px"></i>
+              <i class="mr-2 spinner-grow spinner-grow-sm spinner-size-s"
+                v-if="status.loadingItem === product.id"></i>
                 加到購物車
             </button>
           </div>
@@ -52,24 +52,21 @@
           <div class="row">
             <div class="col-md-4">
               <p><i class="fas fa-weight-hanging pr-2"></i>重量：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{ product.options.weight }}
                 </span>克
               </p>
             </div>
             <div class="col-md-4">
               <p><i class="fas fa-fire-alt pr-2"></i>熱量：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{ product.options.calories }}
                 </span>卡
               </p>
             </div>
             <div class="col-md-4">
               <p><i class="fas fa-egg pr-2"></i>蛋白質：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{ product.options.protein }}
                 </span>克
               </p>
@@ -78,24 +75,21 @@
           <div class="row mt-md-2">
             <div class="col-md-4">
               <p><i class="fas fa-tint pr-2"></i>脂肪：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{product.options.fat}}
                 </span>克
               </p>
             </div>
             <div class="col-md-4">
               <p><i class="fas fa-cookie-bite pr-2"></i>碳水：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{product.options.carbohydrate}}
                 </span>克
               </p>
             </div>
             <div class="col-md-4">
               <p><i class="fas fa-certificate pr-2"></i>鈉：
-                <span class="border-bottom border-dark text-center"
-                style="display:inline-block; width:30%">
+                <span class="border-bottom border-dark text-center nutrition-border">
                 {{ product.options.na }}
                 </span>毫克
               </p>
@@ -104,7 +98,7 @@
         </div>
       </div>
       <ProductNotice/>
-      <hr class="mt-5" style="border-width:1.5px">
+      <hr class="mt-5 hr-border-width">
       <div class="row mt-5">
         <div class="col">
         <h4 class="mb-4">相關商品</h4>

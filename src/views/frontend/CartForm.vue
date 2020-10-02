@@ -1,15 +1,19 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="jumbotron jumbotron-fluid bg-cover mb-0"
-    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 200px">
+    <div class="jumbotron jumbotron-fluid bg-cover bg-img-height-s px-md-0"
+    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg)">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
             <div class="d-flex flex-column align-items-start mt-minus-m">
-              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
+              <h1 class="text-light font-weight-bold font-size-xl">食指大動，
                 <br>宅配到府！</h1>
+            </div>
+          </div>
+          <div class="col-md-5 d-md-none">
+            <div class="d-flex justify-content-center align-items-center text-shadow">
+              <h1 class="text-light font-weight-bold font-size-xl">食指大動，<br>宅配到府！</h1>
             </div>
           </div>
         </div>
@@ -23,7 +27,7 @@
               <div class="d-flex justify-content-center">
                 <h4 class="text-dark mb-0 font-weight-bold">訂購人資訊</h4>
               </div>
-              <hr class="border-dark" style="border-width:1.5px">
+              <hr class="border-dark hr-border-width">
               <validation-observer v-slot="{ invalid }">
                 <form @submit.prevent="createOrder">
                   <div class="form-group">
@@ -100,7 +104,7 @@
                     </div>
                     <div class="col-md-4 mt-3 mt-md-0">
                       <button class="btn btn-outline-primary btn-block d-flex align-items-center
-                      justify-content-center" :disabled="invalid"
+                      justify-content-center not-allowed" :disabled="invalid"
                       :class="{ disabled: loadingItem }">
                       下一步
                     <i class="ml-2 spinner-grow spinner-grow-sm"
@@ -119,12 +123,11 @@
               <hr>
               <div v-for="item in carts" :key="item.product.id + 1">
                 <div class="d-flex mb-3">
-                  <img :src="item.product.imageUrl[0]" alt="" class="mr-2"
-                  style="width: 60px; object-fit: cover">
+                  <img :src="item.product.imageUrl[0]" alt="" class="mr-2 table-img-width">
                   <div class="w-100">
-                    <div class="d-flex justify-content-between font-weight-bold">
-                      <p class="mb-0">{{ item.product.title }}</p>
-                      <p class="mb-0">X {{ item.quantity }}</p>
+                    <div class="d-flex justify-content-between">
+                      <h6 class="mb-0 font-weight-bold">{{ item.product.title }}</h6>
+                      <h6 class="mb-0 font-weight-bold">X {{ item.quantity }}</h6>
                     </div>
                     <div class="d-flex justify-content-between">
                       <small class="mb-0 text-muted">
@@ -188,23 +191,23 @@
               </div>
               <hr>
               <div class="d-flex justify-content-between">
-                <p class="mb-0 h4 font-weight-bold">總金額</p>
-                <p v-if="coupon.enabled" class="mb-0 h4 font-weight-bold">
+                <h4 class="mb-0 font-weight-bold">總金額</h4>
+                <h4 v-if="coupon.enabled" class="mb-0 font-weight-bold">
                   <span v-if="cartTotal * (coupon.percent / 100) < 2000">
                       {{ 170 + cartTotal * (coupon.percent / 100) | money }}
                   </span>
                   <span v-else>
                       {{ cartTotal * (coupon.percent / 100) | money }}
                   </span>
-                </p>
-                <p v-else class="mb-0 h4 font-weight-bold">
+                </h4>
+                <h4 v-else class="mb-0 font-weight-bold">
                   <span v-if="cartTotal < 2000">
                     {{ 170 + cartTotal | money }}
                   </span>
                   <span v-else>
                     {{ cartTotal | money }}
                   </span>
-                </p>
+                </h4>
               </div>
               </div>
             </div>

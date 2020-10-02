@@ -5,11 +5,11 @@
       <table class="table table-striped">
         <thead class="text-center">
           <tr>
-            <th scope="col" style="min-width:200px">下單時間</th>
-            <th scope="col" style="min-width:250px">購買品項</th>
+            <th scope="col" class="table-width-xl-plus">下單時間</th>
+            <th scope="col" class="table-width-2xl">購買品項</th>
             <th scope="col">付款方式</th>
-            <th scope="col" style="min-width:125px">應付金額</th>
-            <th scope="col" style="min-width:135px">是否付款</th>
+            <th scope="col" class="table-width-m-plus">應付金額</th>
+            <th scope="col" class="table-width-l">是否付款</th>
           </tr>
         </thead>
         <tbody class="text-center" v-if="orders.length">

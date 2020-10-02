@@ -10,20 +10,20 @@
           <table class="table table-striped text-center">
             <thead>
               <tr>
-                <th scope="col" style="min-width:120px">分類</th>
-                <th scope="col" width="150" class="text-center">產品圖</th>
-                <th scope="col" style="min-width:180px">產品名稱</th>
-                <th scope="col" style="min-width:100px">原價</th>
-                <th scope="col" style="min-width:100px">售價</th>
-                <th scope="col" style="min-width:100px">是否上架</th>
-                <th scope="col" style="min-width:120px">編輯</th>
+                <th scope="col" class="table-width-m">分類</th>
+                <th scope="col" class="text-center table-width-l">產品圖</th>
+                <th scope="col" class="table-width-xl">產品名稱</th>
+                <th scope="col" class="table-width-s">原價</th>
+                <th scope="col" class="table-width-s">售價</th>
+                <th scope="col" class="table-width-s">是否上架</th>
+                <th scope="col" class="table-width-m">編輯</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="(product, index) in products" :key="index">
                 <td scope="row" class="align-middle">{{ product.category }}</td>
                 <td scope="row" class="align-middle text-center"><img :src="product.imageUrl" alt=""
-                style="height:80px"></td>
+                class="table-img-height-s"></td>
                 <td class="align-middle">{{ product.title }}</td>
                 <td class="align-middle">{{ product.origin_price | money }}</td>
                 <td class="align-middle">{{ product.price | money }}</td>
@@ -70,7 +70,7 @@
                       <div class="form-group">
                         <label for="customFile">
                         或 上傳圖片
-                        <img v-if="status.fileUploading" style="width: 20px;" src="https://www.intogif.com/resource/image/loading/spin.gif" alt="">
+                        <img v-if="status.fileUploading" class="h-20" src="https://www.intogif.com/resource/image/loading/spin.gif" alt="">
                         </label>
                         <input id="customFile" ref="file" type="file" class="form-control"
                         @change="uploadFile">

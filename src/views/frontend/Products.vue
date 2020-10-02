@@ -1,15 +1,19 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="jumbotron jumbotron-fluid bg-cover"
-    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/rq8hCIjmAHnXNIxblTDrqxURtgLE5av1GvKHihtuhCLNL9aLN1Ay0I9f6pXx87DOKVuViC5iAHpRQKSQEruXSEflcMxzb94KJcPwo03j2I2206Ykzqg7yRNtkIksTRif.jpg);
-    height: 250px">
+    <div class="jumbotron jumbotron-fluid bg-cover bg-img-height-s-plus"
+    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/rq8hCIjmAHnXNIxblTDrqxURtgLE5av1GvKHihtuhCLNL9aLN1Ay0I9f6pXx87DOKVuViC5iAHpRQKSQEruXSEflcMxzb94KJcPwo03j2I2206Ykzqg7yRNtkIksTRif.jpg)">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
             <div class="d-flex flex-column align-items-start">
-              <h1 class="text-light font-weight-bold pt-2" style="font-size:50px">精選食材，
+              <h1 class="text-light font-weight-bold pt-2 font-size-xl">精選食材，
                 <br>美味多元！</h1>
+            </div>
+          </div>
+          <div class="col-md-5 d-md-none">
+            <div class="d-flex justify-content-center align-items-center mt-4 text-shadow">
+              <h1 class="text-light font-weight-bold font-size-xl">精選食材，<br>美味多元！</h1>
             </div>
           </div>
         </div>
@@ -55,6 +59,7 @@
       </ul>
       <div class="row mt-3">
         <div class="col-md-4 my-3" v-for="item in newProducts" :key="item.id">
+          <router-link :to="`/product/${item.id}`" class="text-decoration-none">
           <div class="card box-shadow border-0 mb-4 position-relative position-relative h-100">
             <router-link :to="`/product/${item.id}`">
             <img :src="item.imageUrl[0]" class="card-img-top rounded-0" alt="...">
@@ -80,11 +85,12 @@
               <button type="button" class="btn btn-outline-primary btn-sm ml-auto
               d-flex align-items-center" @click.prevent="addToCart(item.id)"
               :disabled="status.loadingItem === item.id">加入購物車
-                <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block"
-                v-if="status.loadingItem === item.id" style="width:12px;height:12px"></i>
+                <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
+                v-if="status.loadingItem === item.id"></i>
               </button>
             </div>
           </div>
+          </router-link>
         </div>
       </div>
     </div>

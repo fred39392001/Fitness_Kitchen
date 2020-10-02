@@ -1,15 +1,19 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="jumbotron jumbotron-fluid bg-cover mb-0"
-    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 200px">
+    <div class="jumbotron jumbotron-fluid bg-cover mb-0 bg-img-height-s"
+    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg)">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
             <div class="d-flex flex-column align-items-start mt-minus-m">
-              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
-                <br>宅配到府！</h1>
+              <h2 class="text-light font-weight-bold font-size-xl">食指大動，
+                <br>宅配到府！</h2>
+            </div>
+          </div>
+          <div class="col-md-5 d-md-none">
+            <div class="d-flex justify-content-center align-items-center mt-2 text-shadow">
+              <h2 class="text-light font-weight-bold font-size-xl">食指大動，<br>宅配到府！</h2>
             </div>
           </div>
         </div>
@@ -17,11 +21,11 @@
     </div>
     <div class="container" v-if="carts.length">
       <div class="row justify-content-center">
-        <div class="col bg-white py-5" style="min-height: calc(100vh - 81px - 81px);">
+        <div class="col bg-white py-5 page-content-height">
           <div class="d-flex justify-content-center">
             <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
           </div>
-          <hr class="border-dark mb-0" style="border-width:1.5px">
+          <hr class="border-dark mb-0 hr-border-width">
           <div class="table-responsive">
             <table class="table table-striped mb-0">
               <thead class="text-center">
@@ -33,13 +37,13 @@
               </thead>
               <tbody>
                 <tr v-for="item in carts" :key="item.product.id + 1">
-                  <td class="text-center px-0" style="width:100px">
+                  <td class="text-center px-0 table-width-s">
                     <img :src="item.product.imageUrl[0]"
-                  alt="" style="height: 100px; object-fit: cover;"></td>
-                  <td class="align-middle text-center" style="min-width:100px">
+                  alt="" class="table-img-height-s-plus"></td>
+                  <td class="align-middle text-center table-width-s">
                     {{ item.product.title }}
                   </td>
-                  <td class="align-middle text-center" style="min-width:125px">
+                  <td class="align-middle text-center table-width-m-plus">
                     <div class="input-group">
                       <div class="input-group-prepend">
                         <button class="btn btn-primary btn-sm  d-flex align-items-center"
@@ -47,7 +51,7 @@
                         @click="item.quantity --;
                         updateQuantity( item.product.id, item.quantity)">
                         <span v-if="status.loadingUpdateCart === item.product.id"
-                        class="spinner-border spinner-border-sm" style="width:12px;height:12px">
+                        class="spinner-border spinner-border-sm spinner-size-s">
                         </span>
                         <span v-else>-</span>
                         </button>
@@ -63,16 +67,16 @@
                         updateQuantity( item.product.id, item.quantity)"
                         :disabled="status.loadingUpdateCart === item.product.id">
                         <span v-if="status.loadingUpdateCart === item.product.id"
-                        class="spinner-border spinner-border-sm" style="width:12px;height:12px">
+                        class="spinner-border spinner-border-sm spinner-size-s">
                         </span>
                         <span v-else>+</span>
                         </button>
                       </div>
                     </div>
                   </td>
-                  <td class="align-middle text-center" style="min-width:125px">
+                  <td class="align-middle text-center table-width-m-plus">
                     {{ item.product.price * item.quantity | money }}</td>
-                  <td class="align-middle text-center" style="min-width:100px">
+                  <td class="align-middle text-center table-width-s">
                     <a @click.prevent="deleteCartItem(item.product.id)"
                     class="text-primary" href="#">
                       <i class="fas fa-trash-alt"></i>
@@ -84,7 +88,7 @@
           </div>
           <div class="container">
             <div class="d-flex justify-content-end mt-4"  v-if="cartTotal > 0">
-              <p class="mb-0 h4 font-weight-bold" style="min-width:80px">總金額</p>
+              <p class="mb-0 h4 font-weight-bold table-width-xs">總金額</p>
               <p class="mb-0 h4 font-weight-bold">{{ cartTotal | money }}</p>
             </div>
           </div>
@@ -105,13 +109,13 @@
         </div>
       </div>
     </div>
-    <div class="container" v-else  style="min-height: calc(100vh - 81px - 81px);">
+    <div class="container page-content-height" v-else>
       <div class="row flex-column justify-content-center align-items-center">
         <div class="col bg-white pt-5">
           <div class="d-flex justify-content-center">
             <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
           </div>
-          <hr class="border-dark mb-0" style="border-width:1.5px">
+          <hr class="border-dark mb-0 hr-border-width">
           <div class="d-flex justify-content-center">
             <p class="h3 text-dark mt-3">購物車無商品，快去逛逛！</p>
           </div>

@@ -1,15 +1,19 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div class="jumbotron jumbotron-fluid bg-cover mb-0"
-    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg);
-    height: 200px">
+    <div class="jumbotron jumbotron-fluid bg-cover mb-0 bg-img-height-s"
+    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/a6TY8mfch9Hh7XZVgzUmGJ9xaMhOxGhk4dReMSwMJ6QhCWJonnqmEH4s5gvwHMvaOrHx0PNcf5iNPbf2Yorjt3qhuxo6EEIxFZhcjMSL5YWLDxDoq2al2YHSVHtQ0JP8.jpg)">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
             <div class="d-flex flex-column align-items-start mt-minus-m">
-              <h1 class="text-light font-weight-bold" style="font-size:50px">食指大動，
+              <h1 class="text-light font-weight-bold font-size-xl">食指大動，
                 <br>宅配到府！</h1>
+            </div>
+          </div>
+          <div class="col-md-5 d-md-none">
+            <div class="d-flex justify-content-center align-items-center mt-2 text-shadow">
+              <h1 class="text-light font-weight-bold font-size-xl">食指大動，<br>宅配到府！</h1>
             </div>
           </div>
         </div>
@@ -23,7 +27,7 @@
               <div class="d-flex">
                 <h4 class="text-dark mb-0 font-weight-bold">結帳</h4>
               </div>
-              <hr class="border-dark" style="border-width:1.5px">
+              <hr class="border-dark hr-border-width">
               <p>
                 只差一步了！點選確認付款以完成訂單。<br>我們將在收到您的訂單後， 約 1 ~ 3 個工作天內出貨！
               </p>
@@ -33,7 +37,7 @@
               <div class="d-flex">
                 <h4 class="text-dark mb-0 font-weight-bold">訂單完成</h4>
               </div>
-              <hr class="border-dark" style="border-width:1.5px">
+              <hr class="border-dark hr-border-width">
               <p>
                 感謝您的購買！<br>您的訂單， 將在 1 ~ 3 個工作天內出貨！
               </p>
@@ -45,12 +49,11 @@
               <h4 class="font-weight-bold mb-3">訂單明細</h4>
               <div v-for="( product, i ) in order.products" :key="i">
                 <div class="d-flex mb-3">
-                  <img :src="product.product.imageUrl[0]" alt="" class="mr-2"
-                  style="width: 60px; object-fit: cover">
+                  <img :src="product.product.imageUrl[0]" alt="" class="mr-2 table-img-width">
                   <div class="w-100">
-                    <div class="d-flex justify-content-between font-weight-bold">
-                      <p class="mb-0">{{ product.product.title }}</p>
-                      <p class="mb-0">X {{ product.quantity }}</p>
+                    <div class="d-flex justify-content-between">
+                      <h6 class="mb-0 font-weight-bold">{{ product.product.title }}</h6>
+                      <h6 class="mb-0 font-weight-bold">X {{ product.quantity }}</h6>
                     </div>
                     <div class="d-flex justify-content-between">
                       <small class="mb-0 text-muted">
@@ -60,49 +63,45 @@
                   </div>
                 </div>
               </div>
-              <table class="table mt-4 border-top border-bottom text-muted">
-                <tbody>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">電子郵件</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.user.email }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 font-weight-normal">收件人姓名</th>
-                    <td class="text-right border-0 px-0">{{ order.user.name }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人電話</th>
-                    <td class="text-right border-0 px-0 pt-0">{{ order.user.tel }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人地址</th>
-                    <td class="text-right border-0 px-0 pt-0">{{ order.user.address }}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <table class="table mt-4 text-muted">
-                <tbody>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 pt-4 pb-0 font-weight-normal">付款金額</th>
-                    <td class="text-right border-0 px-0 pt-4 pb-0">{{ order.amount | money }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 font-weight-normal">付款方式</th>
-                    <td class="text-right border-0 px-0">{{ order.payment }}</td>
-                  </tr>
-                  <tr>
-                    <th scope="row" class="border-0 px-0 pt-0 font-weight-normal">付款狀態</th>
-                    <td v-if="!order.paid" class="text-right border-0 px-0 pt-0 text-primary
-                    font-weight-bold">
-                      尚未付款
-                    </td>
-                    <td v-else class="text-right border-0 px-0 pt-0 text-success
-                    font-weight-bold">
-                      付款完成
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <ul class="mt-4 mb-0 border-top border-bottom text-muted pl-0">
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 pt-3 pb-0 font-weight-normal">電子郵件</p>
+                  <p class="text-right border-0 px-0 pt-3 pb-0">{{ order.user.email }}</p>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 font-weight-normal">收件人姓名</p>
+                  <p class="text-right border-0 px-0">{{ order.user.name }}</p>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人電話</p>
+                  <p class="text-right border-0 px-0 pt-0">{{ order.user.tel }}</p>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 pt-0 font-weight-normal">收件人地址</p>
+                  <p class="text-right border-0 px-0 pt-0">{{ order.user.address }}</p>
+                </li>
+              </ul>
+              <ul class="text-muted pl-0">
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 pt-3 pb-0 font-weight-normal">付款金額</p>
+                  <p class="text-right border-0 px-0 pt-3 pb-0">{{ order.amount | money }}</p>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 font-weight-normal">付款方式</p>
+                  <p class="text-right border-0 px-0">{{ order.payment }}</p>
+                </li>
+                <li class="d-flex justify-content-between">
+                  <p scope="row" class="border-0 px-0 pt-0 font-weight-normal mb-0">付款狀態</p>
+                  <p v-if="!order.paid" class="text-right border-0 px-0 pt-0 mb-0 text-primary
+                  font-weight-bold">
+                    尚未付款
+                  </p>
+                  <p v-else class="text-right border-0 px-0 pt-0 mb-0 text-success
+                  font-weight-bold">
+                    付款完成
+                  </p>
+                </li>
+              </ul>
               <hr v-if="order.paid === false">
             <div class="row justify-content-end">
               <div class="col-md-6">
@@ -110,8 +109,7 @@
                   <a class="btn btn-primary d-flex align-items-center justify-content-center"
                   @click.prevent="payOrder" :disabled="loadingItem">
                   確認付款
-                  <span v-if="loadingItem" class="spinner-grow spinner-grow-sm ml-2"
-                  style="width:12px;height:12px">
+                  <span v-if="loadingItem" class="spinner-grow spinner-grow-sm ml-2 spinner-size-s">
                   </span>
                   </a>
                 </div>

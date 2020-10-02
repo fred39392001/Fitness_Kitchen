@@ -1,9 +1,9 @@
 <template>
     <div class="bg-dark sticky-top">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container">
               <div class="d-flex align-items-center">
-              <img src="img/Fitness_Kitchen_Logo_W.svg"  style="height:55px" alt="">
+              <img src="img/Fitness_Kitchen_Logo_W.svg" class="h-55" alt="">
               <p class="ml-3 h3 text-white mb-0">後台管理系統</p>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse"

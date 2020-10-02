@@ -3,8 +3,8 @@
     <div class="container">
       <div class="row py-4 d-flex align-items-center">
         <div class="col-lg-6 d-flex justify-content-center justify-content-lg-start">
-        <p class="mb-0 text-light" style="font-family:'Arimo'">Copyright © 2020
-          <span style="font-family:'Russo One'">FITNESS KITCHEN</span> All Rights Reserved.</p>
+        <p class="mb-0 text-light font-Arimo">Copyright © 2020
+          <span class="font-RussoOne">FITNESS KITCHEN</span> All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 mt-3 mt-lg-0">
         <ul class="d-flex list-unstyled mb-0 h4 align-items-center justify-content-center

@@ -1,5 +1,5 @@
 <template>
-  <div style="position: fixed; top: 20px; right: 20px; min-width: 300px; z-index: 11000;">
+  <div class="toasts-position">
     <div
       v-for="(item, i) in messages"
       :id="`toast-${i}`"
@@ -12,8 +12,7 @@
     >
       <div class="toast-header">
         <div
-          class="inline-block rounded mr-2"
-          style="width: 20px; height: 20px"
+          class="inline-block rounded mr-2 toasts-square"
           :class="`bg-${ item.status }`"
         />
         <strong class="mr-auto">FITNESS KITCHEN</strong>
@@ -81,7 +80,7 @@ export default {
 };
 </script>
 
-<style scope>
+<style scoped>
 .message-alert {
   position: fixed;
   max-width: 50%;

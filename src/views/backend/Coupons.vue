@@ -11,11 +11,11 @@
           <table class="table table-striped text-center">
             <thead>
               <tr>
-                <th scope="col" style="min-width:120px">名稱</th>
-                <th scope="col" style="min-width:150px">折扣百分比</th>
-                <th scope="col" style="min-width:180px">到期日</th>
-                <th scope="col" style="min-width:100px">是否啟用</th>
-                <th scope="col" style="min-width:120px">編輯</th>
+                <th scope="col" class="table-width-m">名稱</th>
+                <th scope="col" class="table-width-l">折扣百分比</th>
+                <th scope="col" class="table-width-xl">到期日</th>
+                <th scope="col" class="table-width-s">是否啟用</th>
+                <th scope="col" class="table-width-m">編輯</th>
               </tr>
             </thead>
             <tbody>
