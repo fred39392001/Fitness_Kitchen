@@ -7,7 +7,7 @@
           </router-link>
           <span class="navbar-nav nav-item ml-auto mr-2 d-md-none">
             <router-link class="nav-link" to="/cart">
-            <i class="fas fa-lg fa-shopping-cart mt-2"></i>
+            <i class="fas fa-lg fa-shopping-cart mr-1 mt-2"></i>
             <span class="badge badge-pill badge-warm cart-logo-l-position no-text-shadow"
             v-if="carts.length">
             {{ carts.length }}</span>
@@ -88,7 +88,6 @@ export default {
     this.$bus.$on('get-cart', () => {
       this.getCart();
     });
-    console.log(this.$route);
   },
   watch: {
     $route() {

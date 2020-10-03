@@ -26,7 +26,67 @@
             <h2 class="text-dark mb-0 font-weight-bold">購物車</h2>
           </div>
           <hr class="border-dark mb-0 hr-border-width">
-          <div class="table-responsive">
+          <div class="d-md-none mt-4 box-shadow"
+          v-for="item in carts" :key="item.product.id + 1" >
+            <div class="d-flex align-items-center p-3">
+              <div class="mr-3">
+                <img :src="item.product.imageUrl[0]"
+                  alt="" class="h-55">
+              </div>
+              <div class="d-flex w-100 align-items-center justify-content-between">
+                <p class="mb-0 h6">{{ item.product.title }}</p>
+                <div class="badge badge-pill badge-primary">
+                  {{ item.product.category }}
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center
+            px-3 mt-2">
+              <div class="input-group input-group-lg mr-5">
+                <div class="input-group-prepend">
+                  <button class="btn btn-primary d-flex align-items-center"
+                  type="button" :disabled="item.quantity === 1"
+                  @click="item.quantity --;
+                  updateQuantity( item.product.id, item.quantity)">
+                  <span v-if="status.loadingUpdateCart === item.product.id"
+                  class="spinner-border spinner-border-sm spinner-size-s">
+                  </span>
+                  <span v-else>-</span>
+                  </button>
+                </div>
+                <input min="1" type="number" class="form-control text-center"
+                v-model="item.quantity"
+                @keyup="updateQuantity(item.product.id, item.quantity)"
+                :disabled="item.quantity === 1">
+                <div class="input-group-append">
+                  <button class="btn btn-primary d-flex align-items-center"
+                  type="button"
+                  @click="item.quantity ++;
+                  updateQuantity( item.product.id, item.quantity)"
+                  :disabled="status.loadingUpdateCart === item.product.id">
+                  <span v-if="status.loadingUpdateCart === item.product.id"
+                  class="spinner-border spinner-border-sm spinner-size-s">
+                  </span>
+                  <span v-else>+</span>
+                  </button>
+                </div>
+              </div>
+              <div>
+                <a @click.prevent="deleteCartItem(item.product.id)"
+                class="text-primary" href="#">
+                  <i class="fas fa-lg fa-trash-alt pt-1"></i>
+                </a>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-end px-3 pb-3">
+              <p class="h5 mr-2">金額</p>
+              <p class="h5">
+                {{ item.product.price * item.quantity | money }}
+              </p>
+            </div>
+          </div>
+          <div class="table-responsive d-none d-md-block">
             <table class="table table-striped mb-0">
               <thead class="text-center">
                 <td>產品圖片</td>
@@ -46,7 +106,7 @@
                   <td class="align-middle text-center table-width-m-plus">
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <button class="btn btn-primary btn-sm  d-flex align-items-center"
+                        <button class="btn btn-primary d-flex align-items-center"
                         type="button" :disabled="item.quantity === 1"
                         @click="item.quantity --;
                         updateQuantity( item.product.id, item.quantity)">
@@ -61,7 +121,7 @@
                       @keyup="updateQuantity(item.product.id, item.quantity)"
                       :disabled="item.quantity === 1">
                       <div class="input-group-append">
-                        <button class="btn btn-primary btn-sm d-flex align-items-center"
+                        <button class="btn btn-primary d-flex align-items-center"
                         type="button"
                         @click="item.quantity ++;
                         updateQuantity( item.product.id, item.quantity)"
@@ -87,7 +147,8 @@
             </table>
           </div>
           <div class="container">
-            <div class="d-flex justify-content-end mt-4"  v-if="cartTotal > 0">
+            <div class="d-flex justify-content-between
+            justify-content-md-end mt-4"  v-if="cartTotal > 0">
               <p class="mb-0 h4 font-weight-bold table-width-xs">總金額</p>
               <p class="mb-0 h4 font-weight-bold">{{ cartTotal | money }}</p>
             </div>

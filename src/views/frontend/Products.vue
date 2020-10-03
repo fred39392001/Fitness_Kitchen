@@ -69,25 +69,51 @@
                 <router-link :to="`/product/${item.id}`">{{ item.title }}</router-link>
               </h4>
               <p class="card-text text-muted mb-0">{{ item.options.summary }}</p>
-              <div class="mt-2 d-lg-flex">
-                <del class="text-muted mr-sm-3">
-                  <small>原價：{{ item.origin_price | money }}</small>
-                </del>
-                <p class="text-primary mb-0">售價：<strong>{{ item.price | money }}</strong>
-                </p>
+              <div class="d-none d-md-block">
+                <div class="mt-2 text-center d-lg-flex">
+                  <del class="text-muted mr-lg-3">
+                    <small>原價：{{ item.origin_price | money }}</small>
+                  </del>
+                  <p class="text-primary mb-0">售價：<strong>{{ item.price | money }}</strong>
+                  </p>
+                </div>
+              </div>
+              <div class="d-md-none">
+                <div class="mt-2 text-center d-flex">
+                  <del class="text-muted mr-3">
+                    <small>原價：{{ item.origin_price | money }}</small>
+                  </del>
+                  <p class="text-primary h5 mb-0">售價：<strong>{{ item.price | money }}</strong>
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="card-footer d-flex">
-              <router-link :to="`/product/${item.id}`">
-                <button type="button" class="btn btn-outline-secondary btn-sm">查看更多</button>
-              </router-link>
+            <div class="card-footer d-none d-md-block">
+              <div class="d-flex">
+                <router-link :to="`/product/${item.id}`">
+                  <button type="button" class="btn btn-outline-secondary btn-sm">查看更多</button>
+                </router-link>
 
-              <button type="button" class="btn btn-outline-primary btn-sm ml-auto
-              d-flex align-items-center" @click.prevent="addToCart(item.id)"
-              :disabled="status.loadingItem === item.id">加入購物車
-                <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
-                v-if="status.loadingItem === item.id"></i>
-              </button>
+                <button type="button" class="btn btn-outline-primary btn-sm ml-auto
+                d-flex align-items-center" @click.prevent="addToCart(item.id)"
+                :disabled="status.loadingItem === item.id">加入購物車
+                  <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
+                  v-if="status.loadingItem === item.id"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-footer d-md-none">
+              <div class="d-flex">
+                <router-link :to="`/product/${item.id}`">
+                  <button type="button" class="btn btn-outline-secondary">查看更多</button>
+                </router-link>
+                <button type="button" class="btn btn-outline-primary ml-auto
+                d-flex align-items-center" @click.prevent="addToCart(item.id)"
+                :disabled="status.loadingItem === item.id">加入購物車
+                  <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
+                  v-if="status.loadingItem === item.id"></i>
+                </button>
+              </div>
             </div>
           </div>
           </router-link>

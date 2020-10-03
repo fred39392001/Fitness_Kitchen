@@ -24,8 +24,8 @@
         <div class="row justify-content-center flex-md-row flex-column-reverse">
           <div class="col-md-7">
             <div class="bg-light">
-              <div class="d-flex justify-content-center">
-                <h4 class="text-dark mb-0 font-weight-bold">訂購人資訊</h4>
+              <div class="d-flex justify-content-center justify-content-md-start">
+                <h4 class="text-dark font-weight-bold mb-0 mt-4 mt-md-0">訂購人資訊</h4>
               </div>
               <hr class="border-dark hr-border-width">
               <validation-observer v-slot="{ invalid }">
@@ -119,7 +119,8 @@
           </div>
           <div class="col-md-5">
             <div class="border p-4">
-              <h4 class="font-weight-bold mb-3">訂單明細</h4>
+              <h4 class="font-weight-bold mb-3 d-flex justify-content-center
+              justify-content-md-start">訂單明細</h4>
               <hr>
               <div v-for="item in carts" :key="item.product.id + 1">
                 <div class="d-flex mb-3">

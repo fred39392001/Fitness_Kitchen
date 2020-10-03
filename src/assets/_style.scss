@@ -251,6 +251,24 @@ img.dark-shadow{
     z-index: 11000;
 }
 
+.headerDivider-l{  
+    border-left:0.75px solid rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom:0;
+}
+
+.headerDivider-r{  
+    border-right:0.75px solid rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom:0;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
