@@ -6,9 +6,9 @@
             <img src="img/Fitness_Kitchen_Logo_W.svg"  class="h-55" alt="">
           </router-link>
           <span class="navbar-nav nav-item ml-auto mr-2 d-md-none">
-            <router-link class="nav-link" to="/cart">
-            <i class="fas fa-lg fa-shopping-cart mr-1 mt-2"></i>
-            <span class="badge badge-pill badge-warm cart-logo-l-position no-text-shadow"
+            <router-link class="nav-link cart-link-width" to="/cart">
+            <i class="fas fa-md fa-shopping-cart mt-2"></i>
+            <span class="badge badge-pill badge-warm cart-logo-position no-text-shadow"
             v-if="carts.length">
             {{ carts.length }}</span>
           </router-link>
@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item d-none d-md-block">
                   <router-link class="nav-link" to="/cart">
-                    <i class="fas fa-shopping-cart"></i>
+                    <i class="fas fa-md fa-shopping-cart"></i>
                     <span class="badge badge-pill badge-warm cart-logo-position
                     no-text-shadow" v-if="carts.length">
                     {{ carts.length }}</span>
@@ -59,8 +59,8 @@
                   to="/products">美味餐點</router-link>
                 </li>
                 <li class="nav-item d-none d-md-block">
-                  <router-link class="nav-link" to="/cart">
-                    <i class="fas fa-shopping-cart"></i>
+                  <router-link class="nav-link cart-link-width" to="/cart">
+                    <i class="fas fa-md fa-shopping-cart"></i>
                     <span class="badge badge-pill badge-warm cart-logo-position
                     no-text-shadow" v-if="carts.length">
                     {{ carts.length }}</span>

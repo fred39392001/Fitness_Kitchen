@@ -22,23 +22,26 @@
     <div class="container mt-5" v-else>
       <div class="bg-cover bg-img-height-l"
       style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ErASO6igoTN6AOjj5Gs10f6rUrz1bBqoXsueQLy5g2pUFHNplCw4a7LysALUj8nhfYBFA8m97SDlTM3kclf9tDdPYQqomMGvRN3i0IghBVJGlBM0rIhZubl4tCEp37Uo.jpg)">
-        <div class="h-100 d-flex flex-column justify-content-center align-items-center p-3">
-          <h1 class="text-light font-weight-bold font-size-xl text-shadow">訂單完成</h1>
-          <p class="text-light text-center font-weight-bold font-size-l text-shadow">
-            感謝您的購買！<br>您的訂單， 將在 1 ~ 3 個工作天內出貨！
-          </p>
-          <router-link to="/products" class="btn btn-dark w-25 mt-3 d-none d-md-block"
-          v-if="order.paid === true">
-          繼續選購
-          </router-link>
-          <router-link to="/products" class="btn btn-dark mt-3 w-50 d-md-none"
-          v-if="order.paid === true">
-          繼續選購
-          </router-link>
+        <div class="h-100 d-flex justify-content-center align-items-center"
+        style="position:relative">
+          <section class="bg-alpha-dark d-flex flex-column align-items-center px-3 py-4 py-md-5">
+            <h1 class="text-light font-weight-bold font-size-xl text-shadow">訂單完成</h1>
+            <p class="text-light text-center font-weight-bold font-size-l text-shadow">
+              感謝您的購買！<br>您的訂單， 將在 1 ~ 3 個工作天內出貨！
+            </p>
+            <router-link to="/products" class="btn btn-outline-light w-25 mt-3 d-none d-md-block"
+            v-if="order.paid === true">
+            繼續選購
+            </router-link>
+            <router-link to="/products" class="btn btn-outline-light mt-3 w-50 d-md-none"
+            v-if="order.paid === true">
+            繼續選購
+            </router-link>
+          </section>
         </div>
       </div>
     </div>
-    <div class="container" v-if="order.paid === false">
+    <div class="container my-3" v-if="order.paid === false">
       <div class="row justify-content-center flex-md-row">
         <div class="col-md-7">
           <div class="bg-light mt-3">
@@ -52,7 +55,7 @@
             <img class="img-fluid w-100" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/Dry9BIAASb4giKnaoSNHtSk3l5GPx4a6lcxAxtoWM9GekuI7w9wUWmb53XFkhg1WWY9rBIPobkNvyGtttxQzHfU1zKpAyZvzJLo4g4XfFQODfneK8E2tGIquXnH9rAcK.jpg" alt="">
           </div>
         </div>
-        <div class="col-md-5 mt-3">
+        <div class="col-md-5 my-3">
           <div class="border p-4">
             <h4 class="font-weight-bold mb-3 d-flex justify-content-center
             justify-content-md-start">訂單明細</h4>
@@ -109,7 +112,20 @@
               </li>
             </ul>
             <hr v-if="order.paid === false">
-            <div class="row justify-content-end">
+            <div class="row justify-content-between">
+              <div class="col-md-6">
+                <div v-if="order.paid === false">
+                  <a @click.prevent="backHome" class="btn btn-outline-dark d-none d-md-block" >
+                  回到首頁
+                  </a>
+                </div>
+                <div v-if="order.paid === false">
+                  <a @click.prevent="backHome" class="mb-3 btn btn-outline-dark btn-block
+                  d-md-none">
+                  回到首頁
+                  </a>
+                </div>
+              </div>
               <div class="col-md-6">
                 <div v-if="order.paid === false">
                   <a class="btn btn-primary d-flex align-items-center justify-content-center"
@@ -122,16 +138,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="mt-3" v-if="order.paid === false">
-            <a @click.prevent="backHome" class="btn btn-outline-dark w-50 d-none d-md-block" >
-            回到首頁
-            </a>
-          </div>
-          <div class="my-3" v-if="order.paid === false">
-            <a @click.prevent="backHome" class="btn btn-outline-dark btn-block d-md-none" >
-            回到首頁
-            </a>
           </div>
         </div>
       </div>

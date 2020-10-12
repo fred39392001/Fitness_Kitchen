@@ -72,9 +72,9 @@
                 </div>
               </div>
               <div>
-                <a @click.prevent="deleteCartItem(item.product.id)"
-                class="text-primary" href="#">
-                  <i class="fas fa-lg fa-trash-alt pt-1"></i>
+                <a role="button" @click.prevent="deleteCartItem(item.product.id)"
+                class="btn btn-outline-primary btn-square" href="#">
+                  <i class="fas fa-trash-alt pt-2"></i>
                 </a>
               </div>
             </div>
@@ -139,7 +139,7 @@
                   <td class="align-middle text-center table-width-s">
                     <a @click.prevent="deleteCartItem(item.product.id)"
                     class="text-primary" href="#">
-                      <i class="fas fa-trash-alt"></i>
+                      <i class="fas fa-md fa-trash-alt"></i>
                     </a>
                   </td>
                 </tr>

@@ -6,13 +6,13 @@
           <img :src="product.imageUrl[0]" class="img-fluid" alt="...">
         </div>
         <div class="col-md-5 d-flex flex-column justify-content-center">
-          <p class="h2 mt-3 mt-md-0 text-primary">{{ product.title }}</p>
+          <h2 class="mt-3 mt-md-0 text-primary">{{ product.title }}</h2>
           <hr class="border-primary mt-0 w-100 hr-border-width">
           <p>{{ product.content }}</p>
           <div class="d-flex">
-            <p class="h4 text-primary mb-0 mr-3">
+            <h4 class="text-primary mb-0 mr-3">
               售價：<strong>{{ product.price | money }}</strong>
-            </p>
+            </h4>
             <del class="text-muted">
               <small>原價：{{ product.origin_price | money }}</small>
             </del>
@@ -76,14 +76,14 @@
             <div class="col-md-4">
               <p><i class="fas fa-tint pr-2"></i>脂肪：
                 <span class="border-bottom border-dark text-center nutrition-border">
-                {{product.options.fat}}
+                {{ product.options.fat }}
                 </span>克
               </p>
             </div>
             <div class="col-md-4">
               <p><i class="fas fa-cookie-bite pr-2"></i>碳水：
                 <span class="border-bottom border-dark text-center nutrition-border">
-                {{product.options.carbohydrate}}
+                {{ product.options.carbohydrate }}
                 </span>克
               </p>
             </div>

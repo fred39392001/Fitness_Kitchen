@@ -224,11 +224,22 @@ img.dark-shadow{
 }
 
 .cart-logo-position{
-    transform: translateX(-6px) translateY(-11px);
+    transform: translateX(-5px) translateY(-13px);
 }
 
-.cart-logo-l-position{
-    transform: translateX(-9px) translateY(-17px);
+.fa-md{
+    font-size: 1.35em;
+}
+
+.cart-link-width{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+}
+
+.btn-square{
+    width: 45px;
+    height: 45px;
 }
 
 .logo-h-75{
@@ -281,8 +292,8 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.nav-link.router-link-exact-active{
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+.navbar-dark .navbar-nav .nav-link.active{
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link-s:hover{
@@ -290,7 +301,7 @@ input[type=number] {
     color:#630815 !important;
 }
 
-.nav-link-s.router-link-exact-active{
+.navbar-dark .navbar-nav .nav-link-s.active{
     background-color: rgba(255, 255, 255, .85);
     color:#ca293e !important;
     text-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
@@ -302,6 +313,13 @@ input[type=number] {
 
 .page-content-height{
     min-height: calc(100vh - 81px - 81px);
+}
+
+.bg-alpha-dark{
+    background-color:  rgba(0, 0, 0, 0.5);
+    position: absolute;
+    left: 0px;
+    right: 0px;
 }
 
 @media (min-width: 576px) and  (max-width: 768px) {

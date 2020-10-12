@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="jumbotron jumbotron-fluid bg-cover mb-0 bg-img-height-l"
-    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/cTavTDhDNpEOuEtcez8MYeAFzq4gRdWnItlM26hpWQxMKGqh45uFkD30Ht1yqOBpqBHvGc9vYCevkCMMkXqfzb4v3BN9VwYggTHVEPRu03LXMMaVbvPkEhgS6DqhOMmG.jpg)">
+    style="background-image:url(https://hexschool-api.s3.us-west-2.amazonaws.com/custom/cTavTDhDNpEOuEtcez8MYeAFzq4gRdWnItlM26hpWQxMKGqh45uFkD30Ht1yqOBpqBHvGc9vYCevkCMMkXqfzb4v3BN9VwYggTHVEPRu03LXMMaVbvPkEhgS6DqhOMmG.jpg); position:relative">
       <div class="container">
         <div class="row">
           <div class="col-md-5 d-none d-md-block">
@@ -13,19 +13,21 @@
               <router-link class="btn btn-outline-light mt-4" to="/products">美味餐點</router-link>
             </div>
           </div>
-          <div class="col-md-5 d-md-none mt-4">
-            <div class="py-2">
-              <h3 class="text-light mt-3 font-size-l text-shadow">您專心健身就好！</h3>
-              <h2 class="text-light font-weight-bold pt-2 font-size-xl text-shadow">食物的事，
-                <br>就交給我們！</h2>
-              <img src="img/Fitness_Kitchen_Logo_W.svg" class="mt-2 logo-h-75 dark-shadow" alt="">
-              <div>
-                <router-link class="btn btn-outline-light mt-4 box-shadow"
-                to="/products">
-                美味餐點</router-link>
-              </div>
+        </div>
+      </div>
+      <div class="d-md-none mt-3 pt-2">
+        <div class="d-flex justify-content-center">
+          <section class="p-4 bg-alpha-dark d-flex flex-column align-items-start">
+            <h3 class="text-light mt-3 font-size-l text-shadow">您專心健身就好！</h3>
+            <h2 class="text-light font-weight-bold pt-2 font-size-xl text-shadow">食物的事，
+              <br>就交給我們！</h2>
+            <img src="img/Fitness_Kitchen_Logo_W.svg" class="mt-2 logo-h-75 dark-shadow" alt="">
+            <div>
+              <router-link class="btn btn-outline-light mt-4 box-shadow"
+              to="/products">
+              美味餐點</router-link>
             </div>
-          </div>
+            </section>
         </div>
       </div>
     </div>
@@ -140,8 +142,8 @@
             <img class="bg-cover mr-3 img-fluid customer-img" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZqeVMx7gtGyCPMn5JN1jFnLymw4JzM4rcSO3XTtmOISxLzS0FQqDYk9P58Xenm0Irwsc7LX8ANZtC5zeWYKb4RvFcRxSj1EA8k0lvi9LQk7QHjRiCXT43g1Ie5lErDot.jpg"
             alt="">
             <div>
-              <p class="mb-0 text-silver font-weight-bold font-size-s-plus">南投市 李小姐</p>
-              <small>我最喜歡線上購物服務，不受地域限制，也能享受美味的料理。</small>
+              <h5 class="mb-0 text-silver font-weight-bold font-size-s-plus">南投市 李小姐</h5>
+              <p class="mb-0"><small>我最喜歡線上購物服務，不受地域限制，也能享受美味的料理。</small></p>
             </div>
           </div>
         </div>
@@ -150,8 +152,8 @@
             <img class="bg-cover mr-3 img-fluid customer-img" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/MWKsMt5ZsQFxVgHyNgA7nZ8TQPpbdIJ3L8LXRlrlkeXvQIjNWdg8y68vbAa5CWx3pbyR61D0Nviy11l2PqF7duYzdF6An5nUWzGrtuqMUSEgX4Brg1uL981XxieaSBR9.jpg"
             alt="">
             <div>
-              <p class="mb-0 text-silver font-weight-bold font-size-s-plus">台中市 劉先生</p>
-              <small>線上顧問的服務很棒，讓我對飲食及健身有基礎認識！</small>
+              <h5 class="mb-0 text-silver font-weight-bold font-size-s-plus">台中市 劉先生</h5>
+              <p class="mb-0"><small>線上顧問的服務很棒，讓我對飲食及健身有基礎認識！</small></p>
             </div>
           </div>
         </div>
@@ -160,8 +162,8 @@
             <img class="bg-cover mr-3 img-fluid customer-img" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/fIviun4snkIzwIl2Vv6WaBt8zdDqUasuaLbXI0UuR4nsLDPDjfawzdWQ25ieC7YfTvA7Ae4GN1GFNKOf9RjRWCEiMfo3YAKeL0fm7gtl4GHeStI9VyAUsUxrNZutcAVx.jpg"
             alt="">
             <div>
-              <p class="mb-0 text-silver font-weight-bold font-size-s-plus">台南市 陳小姐</p>
-              <small>餐食十分美味，而且選擇多元，營養成分符合健身需求。</small>
+              <h5 class="mb-0 text-silver font-weight-bold font-size-s-plus">台南市 陳小姐</h5>
+              <p class="mb-0"><small>餐食十分美味，而且選擇多元，營養成分符合健身需求。</small></p>
             </div>
           </div>
         </div>
@@ -170,8 +172,8 @@
             <img class="bg-cover mr-3 img-fluid customer-img" src="https://hexschool-api.s3.us-west-2.amazonaws.com/custom/ZJqa1FGqPbEOnSdnKO3GGjjsQhBtINNhgrRewxwERP9rpjdzN3DVaDrI8ocQkqpd5D293NyhVwpX8CdRnzClkS5p0aAXy4xAcMrWpiug67H85TiHFqmFocNS4MMyoj5u.jpg"
             alt="">
             <div>
-              <p class="mb-0 text-silver font-weight-bold font-size-s-plus">新北市 湯瑪士</p>
-              <small>臺灣很棒！發現臺灣有這樣的服務，非常開心，我愛臺灣。</small>
+              <h5 class="mb-0 text-silver font-weight-bold font-size-s-plus">新北市 湯瑪士</h5>
+              <p class="mb-0"><small>臺灣很棒！發現臺灣有這樣的服務，非常開心，我愛臺灣。</small></p>
             </div>
           </div>
         </div>

@@ -22,13 +22,13 @@
     <div class="container mt-md-5 mt-3">
       <ul class="nav nav-pills justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home"
-          role="tab" aria-controls="pills-home" aria-selected="true"
+          <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
+          href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"
           @click.prevent="getFilter(filterType = 'all')">全部餐點</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
-          role="tab" aria-controls="pills-profile" aria-selected="false"
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill"
+          href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"
           @click.prevent="getFilter(filterType = 'beef')">嚴選牛肉</a>
         </li>
         <li class="nav-item" role="presentation">
@@ -59,15 +59,10 @@
       </ul>
       <div class="row mt-3">
         <div class="col-md-4 my-3" v-for="item in newProducts" :key="item.id">
-          <router-link :to="`/product/${item.id}`" class="text-decoration-none">
           <div class="card box-shadow border-0 mb-4 position-relative position-relative h-100">
-            <router-link :to="`/product/${item.id}`">
             <img :src="item.imageUrl[0]" class="card-img-top rounded-0" alt="...">
-            </router-link>
             <div class="card-body d-flex flex-column align-items-center justify-content-center">
-              <h4 class="mb-0">
-                <router-link :to="`/product/${item.id}`">{{ item.title }}</router-link>
-              </h4>
+              <h4 class="mb-0 text-primary">{{ item.title }}</h4>
               <p class="card-text text-muted mb-0">{{ item.options.summary }}</p>
               <div class="d-none d-md-block">
                 <div class="mt-2 text-center d-lg-flex">
@@ -90,12 +85,14 @@
             </div>
             <div class="card-footer d-none d-md-block">
               <div class="d-flex">
-                <router-link :to="`/product/${item.id}`">
-                  <button type="button" class="btn btn-outline-secondary btn-sm">查看更多</button>
+                <router-link :to="`/product/${item.id}`" role="button" class="btn
+                btn-outline-secondary btn-sm stretched-link">
+                查看更多
                 </router-link>
 
                 <button type="button" class="btn btn-outline-primary btn-sm ml-auto
-                d-flex align-items-center" @click.prevent="addToCart(item.id)"
+                d-flex align-items-center stretched-link" style="position: relative;"
+                @click.prevent="addToCart(item.id)"
                 :disabled="status.loadingItem === item.id">加入購物車
                   <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
                   v-if="status.loadingItem === item.id"></i>
@@ -104,11 +101,13 @@
             </div>
             <div class="card-footer d-md-none">
               <div class="d-flex">
-                <router-link :to="`/product/${item.id}`">
-                  <button type="button" class="btn btn-outline-secondary">查看更多</button>
+                <router-link :to="`/product/${item.id}`" role="button" class="btn
+                btn-outline-secondary stretched-link">
+                  查看更多
                 </router-link>
                 <button type="button" class="btn btn-outline-primary ml-auto
-                d-flex align-items-center" @click.prevent="addToCart(item.id)"
+                d-flex align-items-center stretched-link" style="position: relative;"
+                @click.prevent="addToCart(item.id)"
                 :disabled="status.loadingItem === item.id">加入購物車
                   <i class="ml-2 spinner-grow spinner-grow-sm d-md-none d-lg-block spinner-size-s"
                   v-if="status.loadingItem === item.id"></i>
@@ -116,7 +115,6 @@
               </div>
             </div>
           </div>
-          </router-link>
         </div>
       </div>
     </div>
