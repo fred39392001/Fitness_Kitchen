@@ -18,7 +18,7 @@
       <div class="d-md-none mt-3 pt-2">
         <div class="d-flex justify-content-center">
           <section class="p-4 bg-alpha-dark d-flex flex-column align-items-start">
-            <h3 class="text-light mt-3 font-size-l text-shadow">您專心健身就好！</h3>
+            <h3 class="text-light font-size-l text-shadow">您專心健身就好！</h3>
             <h2 class="text-light font-weight-bold pt-2 font-size-xl text-shadow">食物的事，
               <br>就交給我們！</h2>
             <img src="img/Fitness_Kitchen_Logo_W.svg" class="mt-2 logo-h-75 dark-shadow" alt="">
